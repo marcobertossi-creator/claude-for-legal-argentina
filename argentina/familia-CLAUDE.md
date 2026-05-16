@@ -2,7 +2,21 @@
 
 > Archivo de configuración para el sistema claude-for-legal.
 > Complementa el perfil general (argentina/CLAUDE.md) con lógica específica de práctica de familia.
-> Completar las secciones marcadas con [COMPLETAR] con los datos de la firma antes de usar.
+> **Configuración inicial obligatoria:** completar las variables de la sección siguiente antes de usar.
+
+---
+
+## Configuración inicial - completar antes de usar
+
+**FUERO_HABITUAL:**
+Indicar el fuero donde tramitan habitualmente tus causas de familia. Opciones: "fuero nacional civil (CABA)", "fuero local CABA (unificado)", "fuero de familia PBA - [departamento judicial]", o combinación.
+
+Ejemplo: `FUERO_HABITUAL: Fuero nacional civil (CABA) y fuero de familia PBA - Morón`
+
+**AREAS_PRACTICA:**
+Indicar las áreas de mayor volumen dentro de familia (divorcio, alimentos, cuidado personal, violencia familiar, filiación, adopción, sucesiones conexas, etc.). El sistema prioriza la lógica de análisis correspondiente.
+
+Ejemplo: `AREAS_PRACTICA: Divorcio, alimentos, cuidado personal, violencia familiar`
 
 ---
 
@@ -12,8 +26,8 @@ Este perfil cubre práctica de derecho de familia argentina en todos los fueros:
 
 No aplica doctrinas de common law de familia (common law marriage, custody standards anglosajones, child support guidelines norteamericanas). Las instituciones argentinas post-CCCN tienen configuración propia que el sistema trata como tal.
 
-**Fuero habitual:** [COMPLETAR]  
-**Áreas de práctica dentro de familia:** [COMPLETAR]
+**FUERO_HABITUAL:** ver sección de configuración inicial
+**AREAS_PRACTICA:** ver sección de configuración inicial
 
 ---
 
@@ -72,7 +86,7 @@ El sistema identifica el fuero al inicio de cada consulta. No transpola instituc
 ### Fuentes primarias
 
 - **CSJN (csjn.gov.ar):** fallos en materia de familia, niñez y adolescencia
-- **CNAC (cnacom.gob.ar):** jurisprudencia civil - verificar salas con competencia en familia
+- **CNAC (Cámara Nacional de Apelaciones en lo Civil):** jurisprudencia civil - verificar salas con competencia en familia
 - **SCBA (scba.gov.ar):** jurisprudencia PBA
 - **TSJ CABA:** jurisprudencia local
 - **INADI:** resoluciones en materia de identidad de género y familia
@@ -228,7 +242,10 @@ Preguntas de diagnóstico:
 **TRHA (arts. 560-564 CCCN):**
 - Consentimiento informado previo
 - Voluntad procreacional como fuente de filiación
-- Gestación por sustitución: no regulada expresamente, jurisprudencia dispar - alertar antes de aconsejar
+- Gestación por sustitución: no regulada expresamente en el CCCN; jurisprudencia dispar con fallos que la admiten por vía judicial y otros que la rechazan. Alertar siempre:
+```
+[VERIFICAR JURISPRUDENCIA VIGENTE: gestación por sustitución - criterio del fuero específico al momento de la consulta]
+```
 
 **Prueba de ADN:**
 - Negativa a someterse: indicio en contra (CSJN)
@@ -328,3 +345,9 @@ Alertas específicas:
 - En procesos con equipo técnico (psicólogos, trabajadores sociales): no asumir el contenido de los informes sin que el abogado los aporte.
 - Compensación económica y alimentos post-divorcio: alertar siempre sobre el plazo de prescripción de 6 meses desde la sentencia de divorcio (art. 442 CCCN).
 - Todo escrito de familia cierra con "Estado del escrito" estándar más: fuero y competencia, NNyA involucrados (sí/no), medidas cautelares vigentes si las hay, próximo plazo procesal si lo hay.
+
+---
+
+*Última actualización: mayo 2026*
+*Normativa base: CCCN Libro Segundo (Ley 26.994), Ley 26.485, Ley 26.061, Ley 26.743, Ley 26.862, CDN (art. 75 inc. 22 CN), Convenio de La Haya 1980 (Ley 23.857)*
+*Autor: Dr. Cristian Aboitiz · [@abogadoaboitiz](https://x.com/abogadoaboitiz)*
