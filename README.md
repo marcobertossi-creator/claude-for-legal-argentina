@@ -14,6 +14,7 @@ argentina/
   administrativo-CLAUDE.md    # Perfil para derecho administrativo
   civil-CLAUDE.md             # Perfil para derecho civil (CCCN)
   concursos-CLAUDE.md         # Perfil para concursos y quiebras (LCQ)
+  ejemplos-laboral.md         # Casos de liquidación resueltos con checklist de rubros
   familia-CLAUDE.md           # Perfil para derecho de familia
   laboral-CLAUDE.md           # Perfil para derecho del trabajo (LCT)
   penal-CLAUDE.md             # Perfil para derecho penal
@@ -63,15 +64,32 @@ No necesitás saber programar para la configuración base. Para conectar fuentes
 
 Hacé click en "Fork" arriba a la derecha. Eso crea una copia en tu cuenta. No descargues el ZIP: el fork te permite incorporar actualizaciones del repositorio original sin pisar tu configuración local.
 
-### Paso 2: Perfil de práctica
+### Paso 2: Perfil de práctica general
 
-Cada plugin tiene un `CLAUDE.md` que el sistema lee antes de hacer cualquier análisis. El archivo `argentina/CLAUDE.md` de este fork reemplaza ese perfil con configuración argentina.
+Abrí `argentina/CLAUDE.md` y cargá su contenido en las instrucciones del Project de Claude que vas a usar para práctica general. Completá la sección "Documentos semilla de la firma" con tus propios documentos de referencia: contratos tipo, escritos representativos, modelos internos. Es la sección de mayor impacto práctico en la calidad del output.
 
-La primera vez que usás un plugin, el sistema corre una entrevista de configuración inicial. Cuando te pida el perfil de práctica, cargá el contenido de `argentina/CLAUDE.md` como punto de partida y completá con los datos de tu firma (fueros habituales, CCT de tus clientes, documentos semilla propios).
+### Paso 3: Perfiles por área
 
-### Paso 3: Plugins críticos
+Para cada área de práctica que uses, abrí el archivo correspondiente y completá las variables de la sección "Configuración inicial" al inicio del archivo. Cada variable tiene un ejemplo concreto. Las variables mínimas son fuero habitual y rol predominante; sin ellas el sistema opera con supuestos genéricos.
 
-Para los tres plugins que requieren reescritura completa de lógica, el `CLAUDE.md` argentino incluye instrucciones específicas por sección. Ver el archivo para el detalle.
+Los perfiles disponibles:
+
+| Archivo | Área | Variable crítica |
+|---|---|---|
+| `laboral-CLAUDE.md` + `ejemplos-laboral.md` | Derecho del trabajo (LCT) | CCT_HABITUAL para el tope art. 245 |
+| `administrativo-CLAUDE.md` | Derecho administrativo | FUERO_HABITUAL para los plazos procesales |
+| `civil-CLAUDE.md` | Derecho civil (CCCN) | AREAS_PRACTICA |
+| `penal-CLAUDE.md` | Derecho penal | ESPECIALIDADES |
+| `familia-CLAUDE.md` | Derecho de familia | AREAS_PRACTICA |
+| `societario-CLAUDE.md` | Societario y M&A | JURISDICCION_INSCRIPCION (IGJ / DPPJ) |
+| `tributario-CLAUDE.md` | Derecho tributario | TRIBUTOS_FRECUENTES |
+| `concursos-CLAUDE.md` | Concursos y quiebras (LCQ) | ROL_PREDOMINANTE |
+
+Cargá el perfil del área junto con el `CLAUDE.md` general en las instrucciones del Project correspondiente.
+
+### Paso 4: Plugins críticos
+
+Para los tres plugins del repo original que requieren reescritura completa de lógica, el `CLAUDE.md` argentino incluye instrucciones específicas por sección. Ver el archivo para el detalle.
 
 ---
 
@@ -92,11 +110,40 @@ No son necesarios para empezar. Los plugins funcionan con el perfil de práctica
 
 ## Lo que podés hacer desde el día uno
 
-- Revisar contratos contra la lista de red flags argentina, con referencia a norma aplicable
+**Contratos:**
+- Revisar contratos contra la lista de red flags argentina, con referencia a norma aplicable (CCCN, LCT, LDC)
 - Redactar borradores de contratos tipo (NDA, prestación de servicios, compraventa) con CCCN como base
-- Preparar briefings de due diligence para operaciones societarias o M&A, con checklist adaptado a LGS y normativa IGJ/DPPJ
-- Monitorear vencimientos de contratos
-- Armar matrices de riesgo para compliance bajo Ley 25.326
+- Detectar cláusulas abusivas en contratos de adhesión y consumo
+
+**Societario y M&A:**
+- Preparar briefings de due diligence con checklist adaptado a LGS y normativa IGJ/DPPJ
+- Armar pactos de accionistas con análisis de ejecutabilidad en Argentina
+- Verificar requisitos de notificación a la CNDC en operaciones de concentración
+
+**Laboral:**
+- Calcular liquidaciones finales (art. 245 LCT + agravantes Ley 24.013 / Ley 25.323 / art. 80)
+- Analizar estrategia desde el trabajador o el empleador con carga probatoria invertida
+- Redactar telegramas y cartas documento laborales
+
+**Administrativo:**
+- Verificar agotamiento de la vía administrativa y plazos de caducidad (art. 25 LNPA)
+- Analizar recursos administrativos y acciones contenciosas en los tres fueros (federal, CABA, PBA)
+
+**Penal:**
+- Analizar estrategia de defensa por etapa procesal y código aplicable (CPPN / CPPF / CPPCABA / CPPBA)
+- Evaluar procedencia de colaboración eficaz (Ley 27.304) y proceso de flagrancia (Ley 27.272)
+
+**Familia:**
+- Armar convenios reguladores de divorcio con todos los institutos del CCCN
+- Analizar alimentos, cuidado personal y régimen comunicacional con jurisprudencia del fuero
+
+**Tributario:**
+- Analizar recursos ante el TFN y la CNACAF
+- Revisar compliance bajo Ley 25.326 (habeas data) con vocabulario argentino nativo
+
+**Concursal:**
+- Verificar privilegios de créditos y estrategia de verificación
+- Analizar acciones de recomposición patrimonial (período de sospecha, arts. 118-119 LCQ)
 
 ---
 
@@ -118,3 +165,5 @@ Este repositorio es una vitrina de referencia, no un proyecto con mantenimiento 
 
 Dr. Cristian Aboitiz · [@abogadoaboitiz](https://x.com/abogadoaboitiz)  
 Abogado (CPACF) · CABA y GBA · Legal tech & IA aplicada a práctica jurídica argentina
+
+*Última actualización: mayo 2026*
