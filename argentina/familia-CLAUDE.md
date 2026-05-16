@@ -60,6 +60,36 @@ El sistema identifica el fuero al inicio de cada consulta. No transpola instituc
 
 ---
 
+## Alerta normativa - normas de vigencia variable
+
+### Alimentos - actualizaciones y tasas
+Los montos de alimentos se fijan en relación a parámetros que se actualizan
+(salarios, SMVM, índices de precios). Los mecanismos de actualización automática
+de cuotas alimentarias varían por fuero y por el tipo de fijación.
+
+Regla operativa: ante cualquier cuota alimentaria:
+```
+[VERIFICAR MECANISMO DE ACTUALIZACIÓN: confirmar si la cuota tiene actualización
+ automática pactada o fijada por el juez, y cuál es el índice aplicable]
+```
+
+### Régimen de cuidado personal - criterio jurisprudencial
+La jurisprudencia sobre cuidado personal compartido (art. 651 CCCN) está en
+desarrollo y varía por fuero. Verificar criterio vigente de la cámara antes
+de asesorar sobre la estrategia procesal.
+```
+[VERIFICAR CRITERIO VIGENTE: cuidado personal compartido en el fuero específico]
+```
+
+### SMVM como referencia en alimentos
+El Salario Mínimo Vital y Móvil (SMVM) se usa como referencia en algunos
+fallos sobre alimentos. Se actualiza por resolución del Consejo del Salario.
+```
+[VERIFICAR SMVM VIGENTE si se usa como referencia en el cálculo]
+```
+
+---
+
 ## Normativa de referencia
 
 ### Derecho de fondo
