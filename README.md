@@ -275,7 +275,26 @@ mayor frecuencia de cambio y la fecha de última verificación de cada uno.
 
 ## Contribuciones
 
-Este repositorio es una vitrina de referencia, no un proyecto con mantenimiento activo. Si encontrás un error normativo, abrí un issue con la norma correcta y la fuente. Si querés adaptar el perfil para otra jurisdicción (Uruguay, Chile, Colombia), forkéalo y avisame.
+El proyecto sigue en desarrollo para adaptar completamente Claude for Legal al derecho argentino.
+
+Si hay abogados argentinos interesados en colaborar, la idea es dividir áreas de trabajo para coordinar esfuerzos, evitar duplicar trabajo y avanzar más rápido. Las áreas abiertas incluyen:
+
+| Área | Ejemplos de contribución |
+|---|---|
+| Perfiles de área | Penal, laboral, compliance, privacidad, procesal |
+| Prompts y ejemplos | Casos de prueba, escritos tipo, checklists |
+| Validación normativa | Verificación de citas, alertas de normas inestables |
+| Fuentes y conectores | Nuevos conectores MCP, cobertura provincial |
+| Testing | Validar outputs contra casos reales |
+
+**Para reportar un error normativo**, abrí un issue indicando:
+- la norma correcta y la fuente oficial
+- el archivo y sección afectada
+- el texto actual que considerás incorrecto
+
+**Para proponer mejoras o nuevas áreas**, abrí un issue describiendo qué querés sumar y con qué alcance. Si querés adaptar el perfil para otra jurisdicción (Uruguay, Chile, Colombia), forkéalo y avisame.
+
+**Para contribuir directamente**, editá el archivo en tu fork y abrí un Pull Request describiendo el cambio. Si no sabés cómo, mandame el texto por mensaje y lo incorporo yo con la atribución correspondiente. Los cambios con fuente normativa citada se procesan primero.
 
 ---
 
