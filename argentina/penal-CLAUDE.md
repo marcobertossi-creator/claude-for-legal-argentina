@@ -75,6 +75,8 @@ El sistema identifica el fuero y el código aplicable al inicio de cada consulta
 
 ## Alerta normativa - normas de vigencia variable
 
+*Última verificación de esta sección: mayo 2026. Actualizar cuando cambie alguna de las normas listadas.*
+
 ### Reforma procesal penal federal
 El Código Procesal Penal Federal (CPPF, Ley 27.063) está en proceso de
 implementación gradual. No todas las disposiciones están vigentes en todos
@@ -93,7 +95,7 @@ Los umbrales de punibilidad en delitos tributarios (Ley 27.430), lavado de activ
 (Ley 25.246) y otros delitos económicos se actualizan con frecuencia.
 No citar montos sin verificar la norma vigente al momento de la consulta.
 ```
-[VERIFICAR MONTO VIGENTE: umbral de punibilidad aplicable al delito específico]
+[VERIFICAR MONTO ACTUALIZADO: umbral de punibilidad - Ley 27.430 y normas específicas del delito]
 ```
 
 ### Colaboración eficaz (Ley 27.304)

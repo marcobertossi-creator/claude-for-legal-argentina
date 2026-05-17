@@ -62,6 +62,8 @@ El sistema identifica el fuero al inicio de cada consulta. No transpola instituc
 
 ## Alerta normativa - normas de vigencia variable
 
+*Última verificación de esta sección: mayo 2026. Actualizar cuando cambie alguna de las normas listadas.*
+
 ### Alimentos - actualizaciones y tasas
 Los montos de alimentos se fijan en relación a parámetros que se actualizan
 (salarios, SMVM, índices de precios). Los mecanismos de actualización automática

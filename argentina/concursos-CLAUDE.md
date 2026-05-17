@@ -56,6 +56,8 @@ El sistema identifica el fuero al inicio de cada consulta. La competencia concur
 
 ## Alerta normativa - normas de vigencia variable
 
+*Última verificación de esta sección: mayo 2026. Actualizar cuando cambie alguna de las normas listadas.*
+
 ### Tasas de interés post-concursal
 El régimen de intereses sobre créditos verificados en el concurso es objeto
 de jurisprudencia en desarrollo. Verificar criterio del fuero antes de asesorar

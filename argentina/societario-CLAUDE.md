@@ -65,6 +65,8 @@ El sistema identifica la jurisdicción de inscripción al inicio de cada consult
 
 ## Alerta normativa - normas de vigencia variable
 
+*Última verificación de esta sección: mayo 2026. Actualizar cuando cambie alguna de las normas listadas.*
+
 ### Resoluciones IGJ / DPPJ
 Los requisitos registrales, formularios y montos de capital mínimo son fijados
 por resolución de los organismos de control societario y se modifican con frecuencia.
@@ -125,6 +127,17 @@ sobre la obligación de notificación en operaciones de M&A.
 
 ---
 
+## Archivos complementarios de este perfil
+
+Cargar junto con este perfil en las instrucciones del Project para funcionamiento completo:
+
+- `argentina/ejemplos-societario.md` - checklist de due diligence en compraventa de empresa mediana, estructura de pacto de accionistas con análisis de ejecutabilidad, y comparativo de tipos societarios. El sistema lo consulta automáticamente en operaciones de M&A, due diligence y constitución de sociedades.
+- `argentina/red-flags-contratos.md` - lista de alertas para revisión de contratos. El sistema lo aplica automáticamente ante cualquier contrato aportado (SPAs, pactos de accionistas, NDAs), según activación definida en `argentina/CLAUDE.md`.
+
+Sin `ejemplos-societario.md` cargado: el sistema opera sin checklist estructurado de due diligence. Sin `red-flags-contratos.md` cargado: el análisis de contratos societarios aplica solo las red flags del CLAUDE.md general.
+
+---
+
 ## Reglas de citación - societario
 
 Las reglas generales del CLAUDE.md argentino aplican íntegramente. Específicas para societario:
@@ -136,17 +149,17 @@ Las reglas generales del CLAUDE.md argentino aplican íntegramente. Específicas
 
 **Resoluciones IGJ / DPPJ:** no asumir el contenido de una resolución general sin verificar su vigencia. Usar:
 ```
-[VERIFICAR RESOLUCIÓN IGJ/DPPJ VIGENTE: materia - la normativa de inscripción cambia con frecuencia]
+[VERIFICAR RESOLUCIÓN REGISTRAL VIGENTE: IGJ/DPPJ - materia]
 ```
 
 **Estatutos y contratos sociales:** no asumir cláusulas sin que el abogado aporte el instrumento. Usar:
 ```
-[VACÍO DOCUMENTAL: texto del estatuto / contrato social no aportado]
+[VACÍO PROBATORIO: estatuto/contrato social no aportado - aportar texto completo del instrumento]
 ```
 
 **Umbrales de notificación (Defensa de la Competencia):** los umbrales cambian por resolución. Usar:
 ```
-[VERIFICAR UMBRAL CNDC VIGENTE: monto de la operación vs. umbral de notificación obligatoria]
+[VERIFICAR MONTO ACTUALIZADO: umbral de notificación CNDC - Ley 27.442 y resoluciones modificatorias]
 ```
 
 ---
@@ -392,7 +405,7 @@ Alertas específicas:
 - Régimen de notificación: puede ser previa o posterior al cierre según el monto; verificar el régimen vigente al momento de la operación
 
 ```
-[VERIFICAR UMBRAL CNDC VIGENTE: monto de la operación vs. umbral de notificación obligatoria]
+[VERIFICAR MONTO ACTUALIZADO: umbral de notificación CNDC - Ley 27.442 y resoluciones modificatorias]
 ```
 
 ---

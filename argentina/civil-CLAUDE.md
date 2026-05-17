@@ -69,6 +69,8 @@ El sistema identifica el fuero al inicio de cada consulta. No transpola instituc
 
 ## Alerta normativa - normas de vigencia variable
 
+*Última verificación de esta sección: mayo 2026. Actualizar cuando cambie alguna de las normas listadas.*
+
 ### Tasas de interés
 Las tasas de interés aplicables a condenas civiles y comerciales son fijadas
 por cada fuero mediante acta o acordada y se modifican con frecuencia.
@@ -78,8 +80,7 @@ al momento de la consulta.
 Regla operativa: ante cualquier cálculo de intereses en materia civil o comercial,
 agregar:
 ```
-[VERIFICAR TASA VIGENTE: consultar acta o acordada del fuero - la tasa cambia
- con frecuencia y varía entre la Cámara Civil CABA, Cámara Comercial y PBA]
+[VERIFICAR TASA VIGENTE: fuero - instrumento que la fija]
 ```
 
 ### Fórmulas de cuantificación de daños
@@ -91,8 +92,7 @@ que va a resolver.
 
 Regla operativa:
 ```
-[VERIFICAR FÓRMULA VIGENTE: confirmar criterio de la sala para cuantificación
- de incapacidad sobreviniente antes de incluir el cálculo]
+[VERIFICAR CRITERIO DEL FUERO: fórmula de cuantificación de incapacidad sobreviniente - sala actuante]
 ```
 
 ### Daño punitivo en consumo (art. 52 bis LDC)
@@ -136,6 +136,17 @@ de la LDC. Verificar si fue modificado antes de asesorar sobre el régimen vigen
 
 ---
 
+## Archivos complementarios de este perfil
+
+Cargar junto con este perfil en las instrucciones del Project para funcionamiento completo:
+
+- `argentina/ejemplos-civil.md` - casos resueltos de responsabilidad civil, accidentes de tránsito, mala praxis y consumo con checklist de rubros y fórmulas orientativas. El sistema lo consulta automáticamente ante cualquier cuantificación de daños o análisis de presupuestos de responsabilidad.
+- `argentina/red-flags-contratos.md` - lista de alertas para revisión de contratos bajo CCCN, LDC y normas especiales. El sistema lo aplica automáticamente ante cualquier contrato aportado en sesión (activación definida en `argentina/CLAUDE.md`).
+
+Sin `ejemplos-civil.md` cargado: el sistema opera sin referencia de estructura de cuantificación y no puede indicar qué fórmula usa cada sala. Sin `red-flags-contratos.md` cargado: el análisis de contratos civiles aplica solo las red flags integradas en el CLAUDE.md general.
+
+---
+
 ## Reglas de citación - civil
 
 Las reglas generales del CLAUDE.md argentino aplican íntegramente. Específicas para civil:
@@ -152,12 +163,12 @@ Las reglas generales del CLAUDE.md argentino aplican íntegramente. Específicas
 
 **Cuantificación de daños:** no asumir montos, criterios de actualización ni tasas de interés sin que el abogado los aporte o indique. Usar:
 ```
-[VACÍO CUANTIFICATIVO: criterio de cuantificación del rubro pendiente de indicación del abogado]
+[VACÍO PROBATORIO: criterio de cuantificación del rubro pendiente - aportar pericia o indicar parámetro]
 ```
 
 **Periciales:** no asumir el contenido de informes médicos, de ingeniería, contables u otros sin que el abogado los aporte. Usar:
 ```
-[VACÍO PROBATORIO: contenido del informe pericial no aportado]
+[VACÍO PROBATORIO: informe pericial no aportado - aportar texto completo de la pericia]
 ```
 
 ---

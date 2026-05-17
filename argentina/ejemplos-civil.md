@@ -82,30 +82,52 @@ y denunciar el siniestro en término.
 | Daño emergente - farmacia / kinesiología | acreditados | $95.000 | $95.000 |
 | Incapacidad sobreviniente | ver fórmula | ver abajo | [CALCULAR] |
 | Daño moral | criterio judicial | [INSERTAR FALLO VERIFICADO: monto para 15% incapacidad, fuero civil CABA] | [CALCULAR] |
-| Daño psicológico | ¿autónomo en este fuero? | [VERIFICAR CRITERIO DE LA SALA] | [CALCULAR] |
+| Daño psicológico | ¿autónomo en este fuero? | [VERIFICAR CRITERIO DEL FUERO: materia - sala actuante] | [CALCULAR] |
 
-**Incapacidad sobreviniente - fórmulas:**
+**Incapacidad sobreviniente - fórmulas por fuero:**
 
-El CCCN (art. 1746) establece que la indemnización debe ser suficiente para
-adquirir una renta que cubra la disminución de aptitudes. Los tribunales argentinos
-aplican distintas fórmulas matemáticas. Las más frecuentes:
+El CCCN (art. 1746 [VERIFICAR VIGENCIA]) exige una indemnización suficiente para
+adquirir una renta que cubra la disminución de aptitudes durante el resto de la
+vida laboralmente activa. Los tribunales aplican fórmulas matemáticas distintas
+según el fuero. La tabla siguiente recoge el criterio predominante al momento
+de la última revisión; verificar siempre el criterio de la sala actuante antes
+de incluir el cálculo en la demanda.
 
-- **Fórmula Méndez** (adoptada por varios fueros nacionales):
-  `a = (C × K) / n` donde C es el ingreso anual, K es el % de incapacidad
-  y n es la tasa de descuento, ajustada por esperanza de vida y edad.
+| Fuero | Fórmula predominante | Descripción | Fallo de referencia |
+|---|---|---|---|
+| Fuero nacional civil (CNAC) | Fórmula Méndez | `C × K × 1/i × [1 - (1+i)^-n]` donde C = ingreso anual, K = % incapacidad, i = tasa de descuento (6% anual), n = años de vida laboralmente activa restantes. Ajusta por esperanza de vida según tablas de mortalidad. | [INSERTAR FALLO VERIFICADO: CNAC - fallo que consagra Fórmula Méndez en ese fuero - aportar sala y año] |
+| Fuero nacional en lo civil y comercial federal | Fórmula Vuoto / Marshall | `C × K × [1 - (1+i)^-n] / i` con tasa de descuento del 6% anual. Igual estructura que Méndez con variantes en la determinación de n y en la tabla de mortalidad aplicada. | [INSERTAR FALLO VERIFICADO: sala - fórmula vigente en el fuero civil y comercial federal] |
+| Fuero civil y comercial CABA (fuero local) | Fórmula Méndez con variantes de sala | Criterio mayoritario coincide con Méndez; algunas salas aplican Vuoto. Verificar la sala específica antes de calcular. | [INSERTAR FALLO VERIFICADO: sala CCCA - criterio vigente de la sala actuante] |
+| Fuero civil y comercial PBA (cámaras departamentales) | Criterio variable por departamento | No hay fórmula unificada a nivel provincial. Bahía Blanca y La Plata tienden a Méndez; Mar del Plata con variantes. Verificar el departamento judicial antes de calcular. | [INSERTAR FALLO VERIFICADO: cámara departamental - criterio vigente] |
+| Fuero laboral (CNAT) | No aplica directamente | En materia laboral la cuantificación de incapacidad por accidente de trabajo se rige por la Ley 26.773 (prestaciones LRT) o por la acción civil del art. 1072/1749 CCCN si se optó por esa vía. Ver `ejemplos-laboral.md` Ejemplo 4. | Ver `ejemplos-laboral.md` |
 
-- **Fórmula Marshall / Vuoto** (variante con tabla de vida):
-  `a = C × K × [1 - (1 + i)^(-n)] / i` donde n es la cantidad de años
-  laboralmente activos restantes e i es la tasa de descuento.
+```
+[VERIFICAR CRITERIO DEL FUERO: fórmula de cuantificación de incapacidad sobreviniente - sala actuante]
+```
 
-[VERIFICAR FÓRMULA VIGENTE: consultar criterio de la sala o cámara donde tramita
-la causa antes de incluir el cálculo en la demanda]
+**Descripción técnica de las fórmulas:**
 
-Con los datos del caso:
-- Ingreso mensual: $400.000 → anual: $4.800.000
-- Incapacidad: 15%
-- Años laborales restantes (hasta los 65): 27 años
-- [CALCULAR aplicando la fórmula que use la sala]
+Fórmula Méndez (forma desarrollada):
+```
+Indemnización = C × K × [1 - (1 + i)^(-n)] / i
+```
+- C = ingreso anual (mejor remuneración mensual × 12, o promedio del último año)
+- K = porcentaje de incapacidad según pericia médica (expresado como decimal: 15% = 0,15)
+- i = tasa de descuento anual (usualmente 6% = 0,06; verificar criterio de la sala)
+- n = años de vida laboralmente activa restante (usualmente hasta los 65 años)
+
+La diferencia entre Méndez y Vuoto/Marshall está principalmente en cómo se
+determina n: Méndez usa la expectativa de vida laboral activa pura; Vuoto/Marshall
+incorpora tablas actuariales de mortalidad que ajustan n según la probabilidad
+de sobrevida del actor.
+
+Con los datos del Ejemplo 1:
+- C = $400.000 × 12 = $4.800.000
+- K = 0,15 (15% de incapacidad)
+- i = 0,06 (verificar si la sala usa esta tasa)
+- n = 27 (actora de 38 años, vida laboral activa hasta los 65)
+- Indemnización = $4.800.000 × 0,15 × [1 - (1,06)^(-27)] / 0,06
+- [CALCULAR: aplicar la fórmula con los datos verificados de la sala actuante]
 
 **Notas:**
 - La ILT (30 días) genera lucro cesante si se acredita que la actora no cobró salario
@@ -198,7 +220,7 @@ Verificar si la entrega en plazo es obligación de medios o de resultado en el c
 |---|---|---|---|
 | Daño emergente - alquileres | Alquileres pagados durante la mora | [CALCULAR: monto mensual x 8 meses] | Acreditar con recibos |
 | Daño emergente - reparación vicios | Presupuesto de reparación | [VERIFICAR: pericia o presupuesto de empresa] | Acreditar con pericia o 3 presupuestos |
-| Daño moral | ¿El fuero lo reconoce en contratos? | [VERIFICAR CRITERIO DE LA SALA] | En contratos, el daño moral es más difícil de acreditar que en extracontractual |
+| Daño moral | ¿El fuero lo reconoce en contratos? | [VERIFICAR CRITERIO DEL FUERO: materia - sala actuante] | En contratos, el daño moral es más difícil de acreditar que en extracontractual |
 | Pérdida de chance | Solo si hay proyecto frustrado acreditable | [CALCULAR si aplica] | - |
 
 **Notas:**
@@ -207,7 +229,7 @@ Verificar si la entrega en plazo es obligación de medios o de resultado en el c
 - La constitución en mora: verificar si fue automática (plazo cierto, art. 886 CCCN)
   o requirió interpelación (art. 887 CCCN). Impacta en el inicio del cómputo de intereses.
 - Intereses moratorios: desde la mora hasta el pago. Tasa: la que fije el contrato,
-  o la tasa activa del BNA en su defecto. [VERIFICAR TASA VIGENTE]
+  o la tasa activa del BNA en su defecto. [VERIFICAR TASA VIGENTE: fuero civil - acordada o acta vigente]
 - Daño moral en contratos: el CCCN (art. 1741) lo admite en principio.
   La jurisprudencia lo reconoce cuando el incumplimiento generó perturbaciones
   de entidad en la esfera íntima del acreedor. Verificar criterio de la sala.
@@ -235,9 +257,9 @@ al caso de consumo de uno civil ordinario.
 | Rubro | Base | Cálculo | Notas |
 |---|---|---|---|
 | Reintegro de cobros indebidos | $85.000 | $85.000 | Acreditar con resúmenes de cuenta |
-| Intereses sobre el reintegro | Tasa activa BNA | [CALCULAR desde cada cobro indebido] | [VERIFICAR TASA VIGENTE] |
+| Intereses sobre el reintegro | Tasa activa BNA | [CALCULAR desde cada cobro indebido] | [VERIFICAR TASA VIGENTE: fuero civil - acordada o acta vigente] |
 | Daño moral | [INSERTAR FALLO VERIFICADO: criterio de la sala para este tipo de incumplimiento] | - | Probar perturbación concreta |
-| Daño punitivo (art. 52 bis LDC) | Conducta dolosa o culpa grave del proveedor | [VERIFICAR CRITERIO DE LA SALA: ratio daño punitivo / daño real] | Ver notas |
+| Daño punitivo (art. 52 bis LDC) | Conducta dolosa o culpa grave del proveedor | [VERIFICAR CRITERIO DEL FUERO: ratio daño punitivo art. 52 bis LDC - sala actuante] | Ver notas |
 
 **Notas sobre daño punitivo:**
 - El daño punitivo del art. 52 bis LDC requiere algo más que el mero incumplimiento.

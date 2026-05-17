@@ -72,6 +72,8 @@ Regla operativa: identificar qué dependencia de AFIP tiene competencia antes de
 
 ## Alerta normativa - normas de vigencia variable
 
+*Última verificación de esta sección: mayo 2026. Actualizar cuando cambie alguna de las normas listadas.*
+
 Esta sección recoge las normas tributarias de mayor volatilidad. La regla general
 del CLAUDE.md (verificar vigencia en toda norma citada) aplica con especial
 intensidad en materia tributaria: los valores de alícuotas, mínimos no imponibles,
@@ -81,14 +83,14 @@ decreto o resolución general AFIP.
 ### Normas con actualización frecuente - marcar siempre
 
 - **Ganancias (Ley 20.628):** el MNI y las escalas se actualizan anualmente o por ley
-  de emergencia. No citar valores sin `[VERIFICAR MONTO VIGENTE]`.
+  de emergencia. No citar valores sin `[VERIFICAR MONTO ACTUALIZADO: monto habilitante - norma vigente]`.
 - **Bienes Personales (Ley 23.966):** los mínimos no imponibles y alícuotas se modifican
   con frecuencia. `[VERIFICAR VIGENCIA: mínimo no imponible y alícuota aplicable]`.
 - **Régimen penal tributario (Ley 27.430, Título IX):** los umbrales de punibilidad
   se actualizan. Nunca citar el monto de punibilidad sin verificar el valor vigente.
-  `[VERIFICAR MONTO DE PUNIBILIDAD VIGENTE: art. 1 y ss. Ley 27.430]`
+  `[VERIFICAR MONTO ACTUALIZADO: umbral de punibilidad - Ley 27.430 arts. 1 y ss.]`
 - **TFN - monto mínimo de competencia:** se actualiza por resolución.
-  `[VERIFICAR MONTO MÍNIMO VIGENTE PARA RECURSO ANTE TFN]`
+  `[VERIFICAR MONTO ACTUALIZADO: monto mínimo TFN - ley o decreto vigente]`
 - **Ingresos brutos - alícuotas:** varían por provincia y se actualizan en la ley
   impositiva anual de cada jurisdicción. `[VERIFICAR ALÍCUOTA VIGENTE: provincia
   y actividad correspondientes]`
@@ -97,7 +99,7 @@ decreto o resolución general AFIP.
 
 Regla operativa: en toda consulta tributaria, agregar al cierre:
 ```
-[VERIFICAR VIGENCIA Y MONTOS: los valores citados en este análisis corresponden
+[VERIFICAR VIGENCIA] [VERIFICAR MONTO ACTUALIZADO: los valores citados en este análisis corresponden
  a la normativa conocida al momento de la consulta. Confirmar con AFIP/organismo
  provincial antes de aconsejar o presentar]
 ```
@@ -126,7 +128,7 @@ Regla operativa: en toda consulta tributaria, agregar al cierre:
 | Impuesto a los débitos y créditos bancarios | Ley 25.413 |
 | Derechos de exportación | CN art. 4 + Ley 27.541 y normas de emergencia |
 
-Regla operativa: las alícuotas, mínimos no imponibles y deducciones cambian con frecuencia. Nunca citar valores numéricos sin indicar [VERIFICAR VIGENCIA Y MONTO ACTUALIZADO]. Proponer siempre que el abogado o el cliente los confirme contra la RG vigente.
+Regla operativa: las alícuotas, mínimos no imponibles y deducciones cambian con frecuencia. Nunca citar valores numéricos sin indicar [VERIFICAR VIGENCIA] + [VERIFICAR MONTO ACTUALIZADO: alícuotas y montos tributarios - RG AFIP vigente]. Proponer siempre que el abogado o el cliente los confirme contra la RG vigente.
 
 ### Convenio Multilateral
 
@@ -188,7 +190,7 @@ Alertas específicas:
 
 ### Recurso de apelación ante el TFN
 
-**Naturaleza:** el TFN es un organismo jurisdiccional independiente de AFIP, con competencia para revisar determinaciones de oficio, multas y resoluciones aduaneras que superen los montos legalmente establecidos [VERIFICAR VIGENCIA Y MONTOS MÍNIMOS].
+**Naturaleza:** el TFN es un organismo jurisdiccional independiente de AFIP, con competencia para revisar determinaciones de oficio, multas y resoluciones aduaneras que superen los montos legalmente establecidos [VERIFICAR VIGENCIA] [VERIFICAR MONTO ACTUALIZADO: monto mínimo TFN - norma vigente].
 
 **Procedimiento:**
 1. Interposición del recurso: escrito ante el TFN dentro de los 15 días hábiles
@@ -292,7 +294,7 @@ AFIP implementa planes de facilidades de pago de manera permanente (Planes AFIP)
 Para operaciones entre sujetos vinculados (art. 17 Ley 20.628):
 - Principio arm's length: las operaciones deben valorarse como si las partes fueran independientes
 - Métodos: precio comparable no controlado, precio de reventa, costo más beneficios, margen neto transaccional, partición de utilidades
-- Documentación obligatoria: estudio de precios de transferencia anual para operaciones que superen los montos fijados por RG AFIP [VERIFICAR MONTO Y RG VIGENTE]
+- Documentación obligatoria: estudio de precios de transferencia anual para operaciones que superen los montos fijados por RG AFIP [VERIFICAR MONTO ACTUALIZADO: montos precios de transferencia - RG AFIP vigente]
 - Regla operativa: en operaciones internacionales entre vinculadas, preguntar al cliente si tiene el estudio de precios de transferencia actualizado. La falta de documentación agrava la posición en una eventual fiscalización.
 
 ---
@@ -322,7 +324,7 @@ Las provincias implementan agentes de retención y percepción de ingresos bruto
 
 Las reglas generales del CLAUDE.md argentino aplican íntegramente. Específicas para tributario:
 
-**Montos, alícuotas y mínimos:** nunca citar valores numéricos sin indicar [VERIFICAR VIGENCIA Y MONTO ACTUALIZADO]. Los valores cambian por ley, decreto o resolución general con frecuencia.
+**Montos, alícuotas y mínimos:** nunca citar valores numéricos sin indicar [VERIFICAR VIGENCIA] + [VERIFICAR MONTO ACTUALIZADO: alícuotas y montos tributarios - RG AFIP vigente]. Los valores cambian por ley, decreto o resolución general con frecuencia.
 
 **Resoluciones Generales AFIP:** citar número y año; agregar [VERIFICAR VIGENCIA]. Las RG son frecuentemente reemplazadas.
 
@@ -333,7 +335,7 @@ Las reglas generales del CLAUDE.md argentino aplican íntegramente. Específicas
 
 **Actos de AFIP:** no asumir el contenido de determinaciones, intimaciones o resoluciones sin que el abogado las aporte. Usar:
 ```
-[VACÍO DOCUMENTAL: texto del acto de AFIP no aportado]
+[VACÍO PROBATORIO: texto del acto de AFIP no aportado - aportar copia del acto determinativo o resolución]
 ```
 
 **Plazos de recursos:** los plazos ante AFIP y el TFN son perentorios. Alertar siempre con:
@@ -356,7 +358,7 @@ Preguntas de diagnóstico:
 
 ### Antes de recomendar vía recursiva
 
-1. Determinar si el monto supera el umbral del TFN [VERIFICAR MONTO MÍNIMO VIGENTE]
+1. Determinar si el monto supera el umbral del TFN [VERIFICAR MONTO ACTUALIZADO: monto mínimo TFN - ley o decreto vigente]
 2. Evaluar fortaleza de los argumentos de fondo
 3. Evaluar si hay interés en mantener relación negocial con AFIP (reconsideración) o en litigar (TFN)
 4. Verificar si el recurso tiene efecto suspensivo sobre el cobro
@@ -375,13 +377,13 @@ Preguntas de diagnóstico:
 ## Instrucciones operativas específicas - tributario
 
 - Identificar el tributo y el organismo (AFIP-DGI, AFIP-DGA, AFIP-DGRSS, organismo provincial) antes de cualquier análisis.
-- Nunca citar alícuotas, montos o mínimos sin [VERIFICAR VIGENCIA Y MONTO ACTUALIZADO].
+- Nunca citar alícuotas, montos o mínimos sin [VERIFICAR VIGENCIA] + [VERIFICAR MONTO ACTUALIZADO: alícuotas y montos tributarios - RG AFIP vigente].
 - En recursos, calcular el plazo desde la notificación antes de analizar el fondo. Si el plazo está vencido o próximo, alertar como primera acción.
 - Ante concurrencia de procedimiento administrativo tributario y causa penal, alertar sobre la interacción entre ambas vías antes de continuar.
 - En precios de transferencia, verificar documentación antes de analizar el riesgo.
 - En ingresos brutos, identificar si el contribuyente está bajo Convenio Multilateral antes de analizar la base imponible provincial.
 - No asumir el contenido de actos de AFIP, expedientes o declaraciones juradas sin que el abogado los aporte.
-- Todo escrito cierra con "Estado del escrito" estándar más: tributo y período involucrado, plazo procesal próximo si lo hay, montos con [VERIFICAR VIGENCIA Y MONTO ACTUALIZADO], elección de vía recursiva y fundamento si se tomó esa decisión por defecto.
+- Todo escrito cierra con "Estado del escrito" estándar más: tributo y período involucrado, plazo procesal próximo si lo hay, montos con [VERIFICAR VIGENCIA] + [VERIFICAR MONTO ACTUALIZADO: alícuotas y montos tributarios - RG AFIP vigente], elección de vía recursiva y fundamento si se tomó esa decisión por defecto.
 
 ---
 

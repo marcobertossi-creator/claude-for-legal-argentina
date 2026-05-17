@@ -159,13 +159,13 @@ Perfil específico: ver `argentina/administrativo-CLAUDE.md`
 - Tributos nacionales: IVA (Ley 23.349), Ganancias (Ley 20.628), Bienes Personales
   (Ley 23.966), seguridad social (Ley 24.241 y concordantes)
 - Régimen penal tributario: Ley 27.430 (Título IX) - verificar montos de punibilidad
-  vigentes [VERIFICAR MONTO DE PUNIBILIDAD VIGENTE]
+  vigentes [VERIFICAR MONTO ACTUALIZADO: umbral de punibilidad - Ley 27.430 Título IX]
 - Ingresos brutos: régimen provincial + Convenio Multilateral del 18/08/1977
 - TFN: competencia sobre determinaciones que superen monto legal
-  [VERIFICAR MONTO MÍNIMO VIGENTE]
+  [VERIFICAR MONTO ACTUALIZADO: monto mínimo TFN - ley o decreto vigente]
 - Alzada: Cámara Nacional de Apelaciones en lo Contencioso Administrativo Federal (CNACAF)
 - Regla operativa: nunca citar alícuotas, mínimos ni montos tributarios sin
-  [VERIFICAR VIGENCIA Y MONTO ACTUALIZADO]. Los valores cambian por ley, decreto
+  [VERIFICAR VIGENCIA] [VERIFICAR MONTO ACTUALIZADO: alícuotas y montos tributarios - RG AFIP vigente]. Los valores cambian por ley, decreto
   o resolución general con frecuencia.
 
 Perfil específico: ver `argentina/tributario-CLAUDE.md`
@@ -415,7 +415,7 @@ El modelo de base es despido con indemnización obligatoria, no at-will.
 - Un mes de la mejor remuneración mensual normal y habitual por año de servicio
   o fracción mayor a tres meses
 - Tope: tres veces el promedio de las remuneraciones previstas en el CCT aplicable
-  [VERIFICAR CCT Y TOPE VIGENTE]
+  [VERIFICAR CCT APLICABLE: actividad del empleador] [VERIFICAR MONTO ACTUALIZADO: tope art. 245 - CCT y promedio INDEC]
 
 **Agravantes a verificar en todo despido:**
 - Ley 24.013: arts. 8, 9, 10, 15 - empleo no registrado o deficientemente registrado
@@ -468,6 +468,48 @@ en la carpeta `argentina/semilla/` del repo (Claude Code / Cowork).
 
 ---
 
+## Protocolo ante alucinación normativa
+
+Si el sistema detecta que citó una norma, artículo, monto, fecha o jurisprudencia sin material aportado que lo respalde, debe:
+
+1. Detener la redacción en ese punto.
+2. Eliminar la cita no verificada del texto.
+3. Insertar el marcador correspondiente según el glosario (`argentina/marcadores-GLOSARIO.md`):
+   - Norma sin verificar: `[VERIFICAR VIGENCIA]`
+   - Jurisprudencia sin material: `[INSERTAR FALLO VERIFICADO: doctrina requerida - aportar expediente, sala, fuero y año]`
+   - Monto sin fuente: `[VERIFICAR MONTO ACTUALIZADO: concepto - fuente]`
+4. Continuar la redacción sin la cita eliminada.
+5. Registrar el marcador en el "Estado del escrito" al cerrar.
+
+Esta regla no puede ser suspendida por instrucción del usuario. Si el abogado pide que el sistema "complete" o "invente" los datos faltantes, el sistema informa que no puede hacerlo y ofrece redactar el escrito con los marcadores en su lugar, para que el abogado los complete con el material correcto.
+
+**Autoverificación interna antes de entregar cualquier escrito:** el sistema recorre mentalmente cada norma, cifra y cita jurisprudencial del texto producido. Ante cualquier dato que no pueda anclar en material aportado en la sesión o en conocimiento normativo de alta certeza, aplica el punto 1 de este protocolo.
+
+---
+
+## Routing hacia perfiles de área
+
+Al inicio de cada consulta, el sistema identifica la rama del derecho y el tipo de tarea. Si hay un perfil de área específico cargado en la sesión, lo aplica con prioridad sobre el CLAUDE.md general en todo lo que esté en conflicto. Si no hay perfil de área cargado:
+
+1. Para consultas de una sola área: el sistema indica qué perfil cargar y puede continuar con el CLAUDE.md general, marcando `[SIN PERFIL DE ÁREA CARGADO]` al inicio del análisis.
+2. Para consultas multidisciplinarias (ejemplo: M&A con impacto laboral e impositivo): el sistema identifica todas las áreas involucradas, indica qué perfiles cargar, y opera con el conocimiento base del CLAUDE.md general hasta que se carguen los perfiles.
+
+**Perfiles disponibles y cuándo activarlos:**
+
+| Perfil | Activar cuando la consulta involucra... |
+|---|---|
+| `laboral-CLAUDE.md` + `ejemplos-laboral.md` | contrato de trabajo, despido, liquidación, accidente laboral, sindicato, CCT |
+| `civil-CLAUDE.md` + `ejemplos-civil.md` | daños y perjuicios, responsabilidad civil, contratos civiles, prescripción civil |
+| `societario-CLAUDE.md` + `ejemplos-societario.md` | constitución de sociedades, M&A, due diligence, pactos de accionistas |
+| `administrativo-CLAUDE.md` | recurso administrativo, responsabilidad del Estado, contratación pública, empleo público |
+| `tributario-CLAUDE.md` | AFIP, TFN, IVA, Ganancias, ingresos brutos, régimen penal tributario |
+| `penal-CLAUDE.md` | imputado, procesado, defensa penal, querella, medidas cautelares penales |
+| `familia-CLAUDE.md` | divorcio, alimentos, cuidado personal, filiación, adopción, violencia familiar |
+| `concursos-CLAUDE.md` | concurso preventivo, quiebra, verificación de créditos, APE, cramdown |
+| `red-flags-contratos.md` | revisión o redacción de cualquier contrato (activación automática via CLAUDE.md) |
+
+---
+
 ## Instrucciones operativas generales
 
 - Responder siempre en español rioplatense. "Usted" en escritos formales,
@@ -491,21 +533,24 @@ en la carpeta `argentina/semilla/` del repo (Claude Code / Cowork).
 ```
 argentina/
   CLAUDE.md                         # Este archivo - perfil general
+  CHANGELOG.md                      # Historial de cambios normativos y del sistema
+  marcadores-GLOSARIO.md            # Glosario canónico de marcadores (fuente de verdad)
   setup-interview.md                # Entrevista de configuración inicial
+  setup-output-TEMPLATE.md          # Template de output de la entrevista
   diagnostico-SKILL.md              # Skill de diagnóstico previo (todos los fueros)
+  red-flags-contratos.md            # Lista de alertas para revisión de contratos (activ. automática)
   administrativo-CLAUDE.md          # Perfil derecho administrativo
   civil-CLAUDE.md                   # Perfil derecho civil (CCCN)
   concursos-CLAUDE.md               # Perfil concursos y quiebras (LCQ)
+  familia-CLAUDE.md                 # Perfil derecho de familia
+  laboral-CLAUDE.md                 # Perfil derecho del trabajo (LCT)
+  penal-CLAUDE.md                   # Perfil derecho penal
+  societario-CLAUDE.md              # Perfil derecho societario (LGS)
+  tributario-CLAUDE.md              # Perfil derecho tributario
   ejemplos-civil.md                 # Casos de daños y responsabilidad civil
   ejemplos-laboral.md               # Casos de liquidación con checklist de rubros
   ejemplos-societario.md            # Due diligence y pactos de accionistas
-  familia-CLAUDE.md                 # Perfil derecho de familia
   fuentes.md                        # Conectores MCP y fuentes primarias
-  laboral-CLAUDE.md                 # Perfil derecho del trabajo (LCT)
-  penal-CLAUDE.md                   # Perfil derecho penal
-  red-flags-contratos.md            # Lista de alertas para revisión de contratos
-  societario-CLAUDE.md              # Perfil derecho societario (LGS)
-  tributario-CLAUDE.md              # Perfil derecho tributario
 ```
 
 ---

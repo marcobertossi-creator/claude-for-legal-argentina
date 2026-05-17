@@ -11,6 +11,40 @@ sin que el abogado tenga que pegar el texto de la norma en la sesión.
 
 ---
 
+## Cómo verificar que un conector está activo antes de usarlo
+
+Los conectores de esta lista son proyectos de la comunidad sin mantenimiento
+garantizado. Antes de depender de un conector en una sesión de trabajo:
+
+1. En Claude Cowork: ir a Configuración > MCP Servers y verificar que el conector
+   figura como activo (ícono verde). Si figura como inactivo o no aparece,
+   no está disponible para esa sesión.
+2. En Claude Code: ejecutar `mcp list` para ver los conectores activos en el
+   contexto actual. Si el conector no aparece, no está disponible.
+3. Hacer una consulta de prueba mínima antes de la consulta real:
+   "¿Podés consultar el art. 1 de la Ley 26.994?" para el conector 1, por ejemplo.
+   Si el conector responde con el texto correcto, está activo. Si devuelve
+   error o no responde, aplicar el fallback correspondiente.
+
+**Si un conector no responde:** no intentar la misma consulta dos veces.
+Aplicar el fallback de la tabla de abajo y registrar en la sesión que el
+conector no estaba disponible.
+
+### Tabla de fallback por conector
+
+| Conector | Función | Fallback si no responde |
+|---|---|---|
+| 1 - Ansvar (InfoLEG) | Texto de normas nacionales | Acceder directamente a infoleg.gob.ar y pegar el texto en la sesión |
+| 2 - Psflores (PJN/CABA) | Jurisprudencia fueros nacionales | Acceder a pjn.gov.ar o buenosaires.gob.ar/jusbaires y pegar el fallo en la sesión |
+| 3 - guidobonomini | Análisis semántico / glosario | Operar con el glosario del CLAUDE.md argentino; la calidad terminológica puede bajar |
+| 4 - Tesauro SAIJ | Vocabulario jurídico | Usar terminología estándar del CCCN y LCT directamente |
+| SCBA | Jurisprudencia PBA | Acceder a scba.gov.ar/jurisprudencia y pegar el fallo en la sesión |
+
+Cuando se usa el fallback manual (pegar texto en sesión), indicar siempre
+al inicio del texto pegado: fuente, fecha de consulta, y URL de origen.
+
+---
+
 ## Conectores disponibles
 
 ### 1. Ansvar-Systems/argentine-law-mcp
@@ -19,6 +53,7 @@ sin que el abogado tenga que pegar el texto de la norma en la sesión.
 **Fuentes:** InfoLEG · SAIJ
 **Función:** Devuelve el texto literal de normas nacionales argentinas sin
 pasar por ningún modelo de lenguaje. Consulta directa a InfoLEG.
+**Estado al mayo 2026:** activo según última verificación. Confirmar antes de usar.
 
 Casos de uso:
 - Verificar el texto actual de un artículo del CCCN, LCT, LDC u otra norma nacional
@@ -30,6 +65,8 @@ Limitaciones:
 - No incluye jurisprudencia
 - No realiza análisis: devuelve texto literal
 
+**Fallback:** infoleg.gob.ar · acceso directo sin conector.
+
 ---
 
 ### 2. Psflores/Legal-MCP-Server-
@@ -37,6 +74,8 @@ Limitaciones:
 **Repositorio:** https://github.com/Psflores/Legal-MCP-Server-
 **Fuentes:** Poder Judicial de la Nación · Justicia CABA
 **Función:** Búsqueda de jurisprudencia de fueros nacionales y CABA.
+**Estado al mayo 2026:** proyecto de la comunidad sin mantenimiento activo declarado.
+Verificar estado antes de usar (ver instrucciones arriba).
 
 Casos de uso:
 - Buscar fallos por doctrina antes de citar en un escrito
@@ -48,6 +87,8 @@ Limitaciones:
 - Los resultados deben verificarse antes de citar: el conector busca,
   no garantiza que el fallo sea el más reciente o representativo
 
+**Fallback:** pjn.gov.ar (fueros federales y nacionales) · buenosaires.gob.ar/jusbaires (fuero local CABA).
+
 ---
 
 ### 3. guidobonomini/argentina-law-mcp-server
@@ -55,6 +96,8 @@ Limitaciones:
 **Repositorio:** https://github.com/guidobonomini/argentina-law-mcp-server
 **Función:** Análisis semántico de documentos legales, glosario judicial
 argentino, detección de riesgos calibrada para praxis local.
+**Estado al mayo 2026:** proyecto de la comunidad sin mantenimiento activo declarado.
+Verificar estado antes de usar (ver instrucciones arriba).
 
 Casos de uso:
 - Análisis de contratos con terminología jurídica argentina nativa
@@ -66,6 +109,9 @@ Limitaciones:
 - El análisis semántico está basado en praxis documentada, no en texto oficial
 - Complementa al conector 1, no lo reemplaza
 
+**Fallback:** operar con el glosario de terminología del CLAUDE.md argentino.
+La calidad terminológica puede bajar en documentos con mucho vocabulario específico.
+
 ---
 
 ### 4. datos-justicia-argentina/Tesauro-Saij-de-Derecho-Argentino
@@ -74,6 +120,8 @@ Limitaciones:
 **Fuente:** SAIJ
 **Función:** Vocabulario controlado para búsqueda jurídica. Mapea sinónimos,
 términos preferidos y jerarquías conceptuales del derecho argentino.
+**Estado al mayo 2026:** repositorio de datos estático; menor riesgo de caída
+que los conectores de consulta en tiempo real. Verificar igualmente antes de usar.
 
 Casos de uso:
 - Mejorar la precisión de búsquedas jurisprudenciales
@@ -83,6 +131,8 @@ Casos de uso:
 Limitaciones:
 - Es un vocabulario de referencia, no un conector a fuentes primarias
 - No devuelve texto normativo ni fallos: solo estructura conceptual
+
+**Fallback:** usar terminología estándar de CCCN, LCT y LDC directamente.
 
 ---
 
@@ -139,8 +189,8 @@ si contradicen una fuente primaria, reportar la discrepancia al abogado
 con el marcador:
 
 ```
-[DISCREPANCIA ENTRE CONECTORES: el conector [X] indica [A] / la fuente primaria
- indica [B]. Verificar directamente en [fuente primaria] antes de proceder.]
+[DISCREPANCIA ENTRE FUENTES: el conector [X] indica [A] / la fuente primaria
+ indica [B]. Verificar directamente en fuente primaria antes de proceder.]
 ```
 
 ---
