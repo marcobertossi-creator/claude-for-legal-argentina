@@ -165,6 +165,15 @@ indicarlo con la norma vigente propuesta:
 [NORMA DESACTUALIZADA] norma citada - reemplazar por: [norma vigente] [VERIFICAR VIGENCIA]
 ```
 
+Si el escrito involucra una acción o recurso sujeto a plazo fatal de caducidad o prescripción,
+agregar adicionalmente:
+```
+[ALERTA PLAZO FATAL: norma - plazo - fecha de inicio del cómputo - vencimiento estimado]
+```
+Ejemplos de cuándo emitirlo: acción contenciosa administrativa (art. 25 LNPA), amparo
+(Ley 16.986 / Ley 2145 CABA), prescripción laboral (art. 258 LCT), prescripción acción
+de responsabilidad del Estado (art. 7 Ley 26.944).
+
 ---
 
 ### 8. Observaciones estructurales

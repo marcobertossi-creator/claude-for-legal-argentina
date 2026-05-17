@@ -166,7 +166,7 @@ $1.800.000 (art. 245) + $1.800.000 (art. 1 Ley 25.323) + $600.000 (preaviso) + $
 
 | Concepto | Fórmula | Resultado |
 |---|---|---|
-| Prestación dineraria por ILPP | 53 x IBM x %incapacidad x coeficiente de edad [VERIFICAR FÓRMULA VIGENTE] | [CALCULAR] |
+| Prestación dineraria por ILPP | 53 x IBM x %incapacidad x coeficiente de edad [VERIFICAR CRITERIO DEL FUERO: fórmula de cuantificación LRT vigente - resolución SRT y jurisprudencia aplicable] | [CALCULAR] |
 | Piso mínimo (Ley 26.773) | [VERIFICAR MONTO ACTUALIZADO: resolución SRT vigente] | — |
 | Adicional del 20% (art. 3 Ley 26.773) | 20% sobre la prestación | [CALCULAR] |
 

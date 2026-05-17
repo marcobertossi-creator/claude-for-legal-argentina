@@ -206,8 +206,10 @@ hay discrepancia con cualquier conector.
 | InfoLEG | infoleg.gob.ar | Texto oficial de normas nacionales |
 | SAIJ | saij.gob.ar | Jurisprudencia, doctrina, legislación provincial |
 | PJN | pjn.gov.ar | Acordadas y jurisprudencia federal |
+| CNACAF | cnacaf.gov.ar | Jurisprudencia contencioso administrativo federal y alzada tributaria |
 | SCBA | scba.gov.ar | Jurisprudencia PBA - fuente primaria bonaerense |
 | Poder Judicial CABA | buenosaires.gob.ar/jusbaires | Jurisprudencia fuero local CABA |
+| PTN | ptn.gov.ar | Dictámenes de la Procuración del Tesoro de la Nación - responsabilidad del Estado y empleo público |
 | AAIP | argentina.gob.ar/aaip | Disposiciones de datos personales |
 | IGJ | igj.gob.ar | Resoluciones societarias CABA |
 | DPPJ | gba.gob.ar/dppj | Resoluciones societarias PBA |

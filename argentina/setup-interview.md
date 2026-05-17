@@ -128,13 +128,48 @@ en toda liquidación. Con los CCTs cargados, solo lo emite cuando el caso se sal
 
 ---
 
-### Bloque 3 - Configuración societaria
+### Bloque 2-bis - Configuración administrativa
 
-Responder solo si societario figura entre las áreas de práctica.
+Responder solo si derecho administrativo figura entre las áreas de práctica.
 
 ---
 
-**P8. Jurisdicción de inscripción habitual**
+**P5-bis. Fuero administrativo habitual**
+
+Opciones: contencioso administrativo federal (CABA) / CCAyT CABA / contencioso administrativo PBA - [departamento judicial] / combinación de los anteriores.
+
+Impacto: el sistema aplica el código y los plazos del fuero indicado sin preguntar en cada sesión. El plazo de caducidad para accionar varía entre fueros (90 días hábiles judiciales en el federal, plazos distintos en CCAyT y PBA). Sin este dato, el sistema pregunta el fuero en cada consulta administrativa.
+
+---
+
+**P6-bis. Áreas dentro de administrativo**
+
+Listar las áreas de mayor volumen dentro de la práctica administrativa, de mayor a menor.
+
+Ejemplo:
+```
+1. Responsabilidad del Estado
+2. Empleo público nacional
+3. Contratación pública (obra pública)
+```
+
+Si la práctica administrativa es ocasional o de área única: indicarlo.
+
+Impacto: el sistema prioriza la lógica de análisis correspondiente (vicios del acto, agotamiento de la vía, instancias recursivas, régimen de responsabilidad, sumario administrativo, etc.) según las áreas declaradas.
+
+---
+
+**P7-bis. Rol predominante en causas administrativas**
+
+Opciones: actor (particular contra el Estado) / demandado (Estado o ente en defensa) / ambos (indicar proporción aproximada).
+
+Ejemplo: `Predominantemente actor, 80% particulares contra organismos nacionales`
+
+Impacto: el sistema activa el módulo de análisis estratégico correspondiente por defecto. En causas como actor: prioriza agotamiento de la vía, plazos de caducidad y requisitos de admisibilidad. En causas como demandado: prioriza análisis de vicios del acto, defensa de la regularidad del procedimiento y legitimidad del accionar estatal.
+
+---
+
+### Bloque 3 - Configuración societaria
 
 Opciones: IGJ (CABA) / DPPJ (PBA) / ambas / otra provincia.
 
@@ -253,11 +288,12 @@ Al terminar de responder, el sistema genera un CLAUDE.md personalizado con:
 1. Identidad y jurisdicción completadas con tus datos.
 2. Normativa de referencia priorizada por tus áreas de práctica.
 3. Configuración laboral (si aplica): fuero, rol y CCTs cargados.
-4. Configuración societaria (si aplica): jurisdicción de inscripción y módulos activados.
-5. Configuración tributaria (si aplica): tributos y fuero de litigio.
-6. Documentos semilla referenciados (si los cargaste).
-7. Preferencias de formato registradas.
-8. Regla de diagnóstico previo configurada según tu respuesta.
+4. Configuración administrativa (si aplica): fuero, áreas y rol (actor/demandado) cargados.
+5. Configuración societaria (si aplica): jurisdicción de inscripción y módulos activados.
+6. Configuración tributaria (si aplica): tributos y fuero de litigio.
+7. Documentos semilla referenciados (si los cargaste).
+8. Preferencias de formato registradas.
+9. Regla de diagnóstico previo configurada según tu respuesta.
 
 El archivo generado reemplaza el CLAUDE.md genérico del repo. Podés editarlo
 directamente o volver a correr la entrevista para regenerarlo.

@@ -237,7 +237,7 @@ Verificar antes de asesorar sobre el tipo societario más adecuado.
 | Constitución | Escritura pública o instrumento privado con firma certificada | Escritura pública | Instrumento privado / online |
 | Registro | IGJ / DPPJ | IGJ / DPPJ | IGJ / DPPJ |
 | Velocidad de inscripción | Media | Media-lenta | Rápida (trámite simplificado) |
-| Fiscalización | Sindicatura opcional | Sindicatura obligatoria si supera ciertos parámetros [VERIFICAR] | Simplificada |
+| Fiscalización | Sindicatura opcional | Sindicatura obligatoria si supera ciertos parámetros [VERIFICAR RESOLUCIÓN REGISTRAL VIGENTE: IGJ/DPPJ - parámetros de activación de sindicatura obligatoria] | Simplificada |
 | Apta para recibir inversión VC | No ideal | Sí | Sí (con limitaciones) |
 
 ```

@@ -27,6 +27,9 @@ El sistema mapea cada pregunta de la entrevista a una variable de este template:
 | `[FUERO_LABORAL]` | P5 | El sistema pregunta fuero laboral en cada sesión |
 | `[ROL_LABORAL]` | P6 | El sistema activa módulo trabajador por defecto |
 | `[CCT_HABITUAL]` | P7 | Se emite `[VERIFICAR CCT APLICABLE]` en toda liquidación |
+| `[FUERO_ADMINISTRATIVO]` | P5-bis | El sistema pregunta fuero administrativo en cada sesión |
+| `[AREAS_ADMINISTRATIVO]` | P6-bis | El sistema opera sin prioridad de módulo administrativo |
+| `[ROL_ADMINISTRATIVO]` | P7-bis | El sistema activa módulo actor por defecto |
 | `[JURISDICCION_INSCRIPCION]` | P8 | El sistema pregunta IGJ/DPPJ en cada sesión |
 | `[OPERACIONES_SOCIETARIAS]` | P9 | El sistema opera sin prioridad de módulo societario |
 | `[TRIBUTOS_FRECUENTES]` | P10 | El sistema opera sin prioridad de módulo tributario |
@@ -68,6 +71,18 @@ El sistema mapea cada pregunta de la entrevista a una variable de este template:
 [CCT_HABITUAL]
 
 Perfil específico: ver `argentina/laboral-CLAUDE.md` y `argentina/ejemplos-laboral.md`.
+
+---
+
+## Configuración administrativa
+
+<!-- Esta sección solo aparece si derecho administrativo figura en AREAS_PRACTICA -->
+
+**Fuero administrativo:** [FUERO_ADMINISTRATIVO]
+**Áreas dentro de administrativo:** [AREAS_ADMINISTRATIVO]
+**Rol predominante:** [ROL_ADMINISTRATIVO]
+
+Perfil específico: ver `argentina/administrativo-CLAUDE.md`.
 
 ---
 
@@ -175,7 +190,7 @@ El glosario canónico de marcadores está en `argentina/marcadores-GLOSARIO.md`.
 1. Reemplazar cada variable con la respuesta del abogado, tal como fue dada.
    No reformatear ni resumir las respuestas sin indicación.
 
-2. Las secciones de área (laboral, societaria, tributaria) solo se incluyen
+2. Las secciones de área (laboral, administrativa, societaria, tributaria) solo se incluyen
    si el área figura en `[AREAS_PRACTICA]`. Si el área no fue mencionada,
    omitir la sección completa sin dejar comentarios ni marcadores.
 
@@ -265,6 +280,22 @@ Ninguno.
 *Generado: 14 de mayo de 2026*
 *Perfil de base: CLAUDE.md · mayo 2026*
 ```
+
+---
+
+**Nota:** el ejemplo anterior muestra un perfil sin práctica administrativa. Si el abogado declaró derecho administrativo entre sus áreas en P6-bis y P7-bis, el CLAUDE.md generado incluye adicionalmente:
+
+```markdown
+## Configuración administrativa
+
+**Fuero administrativo:** Contencioso administrativo federal (CABA)
+**Áreas dentro de administrativo:** Responsabilidad del Estado, contratación pública
+**Rol predominante:** Actor (particulares contra organismos nacionales)
+
+Perfil específico: ver `argentina/administrativo-CLAUDE.md`.
+```
+
+Si el abogado no declaró práctica administrativa, esta sección se omite por completo.
 
 ---
 

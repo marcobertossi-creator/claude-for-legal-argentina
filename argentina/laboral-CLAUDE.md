@@ -462,7 +462,9 @@ Estrategia de análisis desde el empleador:
 - Carga probatoria invertida: el análisis estratégico parte de que el empleador debe probar, no el trabajador, en la mayoría de los institutos.
 - En todo despido: calcular la liquidación completa antes de analizar la estrategia. Los conceptos omitidos en la liquidación final son fuente de litigio.
 - En accidentes: alertar siempre sobre la opción excluyente antes de aconsejar cualquier acción.
-- Prescripción: verificar el plazo y la fecha de exigibilidad de cada crédito por separado. En diferencias salariales, prescripción crédito por crédito.
+- Prescripción: ante cualquier consulta donde el plazo pueda estar vencido o próximo a vencer, emitir antes de analizar el fondo:
+  `[ALERTA PLAZO FATAL: art. 258 LCT - 2 años - desde que cada crédito fue exigible - vencimiento: calcular por rubro]`
+  Verificar el plazo y la fecha de exigibilidad de cada crédito por separado. En diferencias salariales, prescripción crédito por crédito.
 - No citar montos de prestaciones de la LRT, topes del art. 245, ni salarios convencionales sin marcador de verificación: se actualizan con frecuencia.
 - No citar la tasa de interés aplicable sin verificar el acta CNAT vigente.
 - Ante cualquier cuestión sobre período de prueba, régimen de extinción o negociación colectiva: agregar alerta de verificación post-DNU 70/2023.

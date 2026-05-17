@@ -267,7 +267,7 @@ al caso de consumo de uno civil ordinario.
   o desprecio hacia los derechos del consumidor.
 - Los montos varían mucho por fuero y por la envergadura del proveedor. En fueros
   nacionales hay fallos que fijan el daño punitivo como múltiplo del daño real
-  (de 2 a 10 veces, según las circunstancias). [VERIFICAR CRITERIO VIGENTE DE LA SALA]
+  (de 2 a 10 veces, según las circunstancias). [VERIFICAR CRITERIO DEL FUERO: ratio daño punitivo art. 52 bis LDC - sala actuante]
 - Legitimación activa para daño punitivo: solo el consumidor damnificado
   (art. 52 bis in fine LDC).
 - Prescripción en relaciones de consumo: 3 años (art. 50 LDC). Verificar que

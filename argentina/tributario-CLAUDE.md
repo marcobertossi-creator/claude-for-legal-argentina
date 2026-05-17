@@ -226,7 +226,7 @@ Para determinaciones que no alcancen el monto del TFN, o después de agotar la v
 
 **Infracciones formales (art. 39 LPT):**
 - Omisión de presentar declaraciones juradas, informes, documentación requerida
-- Multa fija por cada infracción [VERIFICAR MONTO ACTUALIZADO]
+- Multa fija por cada infracción [VERIFICAR MONTO ACTUALIZADO: multa art. 39 LPT - RG AFIP vigente]
 - Se gradúa según reincidencia y gravedad
 
 **Infracción material - omisión de pago (art. 45 LPT):**

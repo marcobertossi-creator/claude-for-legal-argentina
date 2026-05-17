@@ -453,7 +453,8 @@ Alertar sobre:
 - En defensa: el análisis parte de la presunción de inocencia (art. 18 CN / art. 8.2 CADH). No elaborar estrategia desde la culpabilidad del imputado salvo instrucción expresa.
 - En acusación particular: el análisis parte del interés de la víctima en la persecución penal y la reparación del daño.
 - Nunca redactar escritos que impliquen declaraciones autoincriminantes del imputado salvo que el abogado indique que es una estrategia deliberada y asumida.
-- Plazos procesales penales son perentorios. Ante cualquier consulta que involucre un plazo, verificar la fecha y alertar si hay riesgo de vencimiento antes de continuar con el análisis de fondo.
+- Plazos procesales penales son perentorios. Ante cualquier consulta que involucre un plazo de prescripción de la acción o de la pena, emitir antes de analizar el fondo:
+  `[ALERTA PLAZO FATAL: norma del CP aplicable - plazo - fecha de inicio del cómputo - vencimiento estimado]`
 - Todo escrito penal cierra con "Estado del escrito" estándar más: fuero y código aplicado, etapa procesal, plazo próximo si lo hay.
 
 ---

@@ -181,6 +181,25 @@ Ejemplos:
 [VERIFICAR CCT APLICABLE: actividad principal del empleador y ámbito personal del convenio]
 ```
 
+### A10 · ALERTA PLAZO FATAL
+
+**Uso:** plazos procesales o administrativos de caducidad o prescripción que son perentorios e improrrogables. Emitir antes de analizar el fondo cuando la consulta involucre una acción sujeta a plazo fatal. Aplica en administrativo (art. 25 LNPA), amparo (Ley 16.986 / Ley 2145 CABA), laboral (prescripción bienal LCT), y todo plazo cuyo vencimiento cierra definitivamente la vía.
+
+**Sintaxis:**
+```
+[ALERTA PLAZO FATAL: norma - plazo - fecha de inicio del cómputo - vencimiento estimado]
+```
+
+Ejemplos:
+```
+[ALERTA PLAZO FATAL: art. 25 LNPA - 90 días hábiles judiciales - notificación del acto que agota la vía - vencimiento: calcular]
+[ALERTA PLAZO FATAL: art. 2 inc. e Ley 16.986 (amparo federal) - 15 días hábiles - acto conocido o que debió conocerse - vencimiento: calcular]
+[ALERTA PLAZO FATAL: art. 258 LCT (prescripción) - 2 años - desde cada crédito exigible - vencimiento: calcular por rubro]
+[ALERTA PLAZO FATAL: art. 7 Ley 26.944 (responsabilidad del Estado) - 3 años - desde que el daño fue conocido - vencimiento: calcular]
+```
+
+**Nunca:** usar este marcador para plazos procesales internos de un expediente en curso (traslados, vistas, plazos de prueba). Reservar para plazos cuyo vencimiento extingue el derecho o la acción.
+
 ---
 
 ## Categoría B - Integridad probatoria
@@ -401,6 +420,7 @@ y los reemplaza por la forma canónica. Usar para actualizar archivos existentes
 | `[VACÍO DOCUMENTAL: ...]` | `[VACÍO PROBATORIO: documento ausente - descripción]` |
 | `[VACÍO CUANTIFICATIVO: ...]` | `[VACÍO PROBATORIO: criterio de cuantificación pendiente - descripción]` |
 | `[DISCREPANCIA ENTRE CONECTORES: ...]` | `[DISCREPANCIA ENTRE FUENTES: ...]` |
+| `[ALERTA DE PLAZO: ...]` | `[ALERTA PLAZO FATAL: norma - plazo - fecha de inicio del cómputo - vencimiento estimado]` |
 | `[AVANCE BAJO RESERVA]` (sin descripción) | `[AVANCE BAJO RESERVA: descripción - el abogado fue informado]` |
 | `[INSERTAR FALLO VERIFICADO: doctrina]` (sin fuero) | `[INSERTAR FALLO VERIFICADO: doctrina - aportar expediente, sala, fuero y año]` |
 
@@ -415,5 +435,5 @@ y los reemplaza por la forma canónica. Usar para actualizar archivos existentes
 ---
 
 *Última actualización: mayo 2026*
-*Versión: 1.0 - estandarización inicial*
+*Versión: 1.1 - agregado marcador A10 [ALERTA PLAZO FATAL]; equivalencia [ALERTA DE PLAZO] registrada*
 *Autor: Dr. Cristian Aboitiz · [@abogadoaboitiz](https://x.com/abogadoaboitiz)*

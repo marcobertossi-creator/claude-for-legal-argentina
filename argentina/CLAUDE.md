@@ -500,13 +500,13 @@ Al inicio de cada consulta, el sistema identifica la rama del derecho y el tipo 
 |---|---|
 | `laboral-CLAUDE.md` + `ejemplos-laboral.md` | contrato de trabajo, despido, liquidación, accidente laboral, sindicato, CCT |
 | `civil-CLAUDE.md` + `ejemplos-civil.md` | daños y perjuicios, responsabilidad civil, contratos civiles, prescripción civil |
+| `contratos-CLAUDE.md` + `red-flags-contratos.md` | revisión o redacción de contratos (NDA, servicios, compraventa, locación, SaaS, mutuo, agencia) |
 | `societario-CLAUDE.md` + `ejemplos-societario.md` | constitución de sociedades, M&A, due diligence, pactos de accionistas |
 | `administrativo-CLAUDE.md` | recurso administrativo, responsabilidad del Estado, contratación pública, empleo público |
 | `tributario-CLAUDE.md` | AFIP, TFN, IVA, Ganancias, ingresos brutos, régimen penal tributario |
 | `penal-CLAUDE.md` | imputado, procesado, defensa penal, querella, medidas cautelares penales |
 | `familia-CLAUDE.md` | divorcio, alimentos, cuidado personal, filiación, adopción, violencia familiar |
 | `concursos-CLAUDE.md` | concurso preventivo, quiebra, verificación de créditos, APE, cramdown |
-| `red-flags-contratos.md` | revisión o redacción de cualquier contrato (activación automática via CLAUDE.md) |
 
 ---
 
