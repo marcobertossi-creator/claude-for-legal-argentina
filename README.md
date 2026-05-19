@@ -161,19 +161,24 @@ Conectores de la comunidad que apuntan directamente a las fuentes oficiales arge
 | 2 | [Psflores/Legal-MCP-Server-](https://github.com/Psflores/Legal-MCP-Server-) | PJN / CABA | Jurisprudencia fueros nacionales | Gratuito |
 | 3 | [guidobonomini/argentina-law-mcp-server](https://github.com/guidobonomini/argentina-law-mcp-server) | Praxis local | Análisis semántico, glosario judicial | Gratuito |
 | 4 | [datos-justicia-argentina/Tesauro-Saij](https://github.com/datos-justicia-argentina/Tesauro-Saij-de-Derecho-Argentino) | SAIJ | Vocabulario controlado para búsqueda jurídica | Gratuito |
-| 5 | `https://api.fallobot.com/mcp` | CSJN · SAIJ · JUBA · SCBA | Búsqueda multifuente simultánea en lenguaje natural; enlaza al fallo original en la fuente oficial | Plan Pro (fallobot.com) |
-| 6 | SCBA / JUBA | Jurisprudencia PBA | Sin conector MCP de fuente abierta; cubierto por FalloBot (5). Ver instrucciones de acceso directo en `fuentes.md` | — |
+| 5 | [voftec/normativapba-mcp](https://github.com/voftec/normativapba-mcp) | normas.gba.gob.ar | Legislación provincial PBA: búsqueda, vigencia, articulado, árbol de dependencias normativas. Instalable vía npx. | Gratuito |
+| 6 | [joaquinescalante23/saij-mcp](https://github.com/joaquinescalante23/saij-mcp) | SAIJ | Investigación profunda: jurisprudencia, legislación, doctrina y dictámenes; grafo legal; OCR para PDFs históricos; resolución de citas textuales. Opera sobre API no oficial de SAIJ - verificar estado antes de usar. | Gratuito |
+| 7 | `https://api.fallobot.com/mcp` | CSJN · SAIJ · JUBA · SCBA | Búsqueda multifuente simultánea en lenguaje natural; enlaza al fallo original en la fuente oficial | Plan Pro (fallobot.com) |
+| 8 | SCBA / JUBA | Jurisprudencia PBA | Sin conector MCP de fuente abierta; cubierto por FalloBot (7). Ver instrucciones de acceso directo en `fuentes.md` | — |
 
 ### Tabla de decisión rápida
 
 | Necesidad | Conector recomendado | Fallback manual |
 |---|---|---|
 | Texto de norma nacional | 1 (Ansvar) | infoleg.gob.ar |
-| Texto de norma provincial PBA | Sin conector MCP | normas.gba.gob.ar |
-| Jurisprudencia CSJN | 5 (FalloBot, plan Pro) | sj.csjn.gov.ar |
-| Jurisprudencia CABA / fueros nacionales | 2 (Psflores) | pjn.gov.ar · jusbaires |
-| Jurisprudencia PBA (SCBA y cámaras) | 5 (FalloBot, plan Pro) | juba.scba.gov.ar |
-| Búsqueda multifuente simultánea | 5 (FalloBot, plan Pro) | Fuentes por separado |
+| Texto de norma provincial PBA | 5 (voftec) | normas.gba.gob.ar |
+| Jurisprudencia CSJN | 7 (FalloBot, plan Pro) | sj.csjn.gov.ar |
+| Jurisprudencia CABA / fueros nacionales | 2 (Psflores) o 6 (saij-mcp) | pjn.gov.ar · jusbaires |
+| Jurisprudencia SAIJ (todas las instancias) | 6 (saij-mcp) | saij.gob.ar |
+| Doctrina y dictámenes | 6 (saij-mcp) | saij.gob.ar |
+| Grafo legal / navegación de citas | 6 (saij-mcp) | Manual en saij.gob.ar |
+| Jurisprudencia PBA (SCBA y cámaras) | 7 (FalloBot, plan Pro) | juba.scba.gov.ar |
+| Búsqueda multifuente simultánea | 7 (FalloBot, plan Pro) | Fuentes por separado |
 | Análisis semántico / terminología | 3 (guidobonomini) | Glosario del CLAUDE.md |
 | Mejora de búsquedas jurisprudenciales | 4 (Tesauro SAIJ) | saij.gob.ar |
 
