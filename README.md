@@ -12,7 +12,7 @@ autónoma desde Claude.ai Projects o Claude Code.
 ```
 argentina/
   CLAUDE.md                         # Perfil general - cargar en todo Project
-  REGISTRO DE CAMBIOS.md            # Historial de cambios normativos y del sistema
+  CHANGELOG.md                      # Historial de cambios normativos y del sistema
   marcadores-GLOSARIO.md            # Glosario canónico de marcadores (fuente de verdad)
   setup-interview.md                # Entrevista de configuración inicial
   setup-output-TEMPLATE.md          # Template de output de la entrevista
@@ -33,6 +33,8 @@ argentina/
   ejemplos-laboral.md               # Casos de liquidación con checklist de rubros
   ejemplos-societario.md            # Due diligence y pactos de accionistas
   fuentes.md                        # Conectores MCP y fuentes primarias
+  macos-automation.md               # Módulo opcional - automatización de escritorio macOS (Claude Code)
+  legal.local.md.template           # Template de configuración local del estudio (por rama del derecho)
 ```
 
 ---
@@ -59,6 +61,7 @@ argentina/
 - Routing automático hacia perfiles de área según la rama del derecho de la consulta
 - Alertas de normas inestables integradas en cada perfil con fecha de última verificación
 - Casos de prueba para verificar que el skill de diagnóstico funciona correctamente
+- Skill de cómputo de plazos procesales y administrativos: días hábiles judiciales y administrativos, días corridos, meses y años, con suspensiones por feria judicial, mediación prejudicial y SECLO
 
 ---
 
@@ -69,23 +72,50 @@ Necesitás:
 - Opcionalmente: Claude Code (terminal) o Claude Cowork (escritorio) para flujos más automatizados
 
 No necesitás saber programar para la configuración base en Claude.ai Projects.
-Para conectar fuentes normativas locales (fase 2, ver `fuentes.md`), vas a necesitar
-acceso a Claude Code o ayuda técnica para instalar los conectores MCP.
+Para conectar fuentes normativas locales (fase 2, ver `fuentes.md`), los conectores
+marcados "URL directa" se agregan en segundos desde Claude.ai sin instalar nada.
 
 ---
 
-## Instalación
+## Instalación paso a paso
 
-### Paso 1: Fork
+> Esta guía asume que nunca usaste GitHub. Si ya tenés experiencia, saltá al Paso 2.
 
-Hacé click en "Fork" arriba a la derecha. Eso crea una copia en tu cuenta. No descargues el ZIP: el fork te permite incorporar actualizaciones del repositorio original sin pisar tu configuración local.
+### Paso 1: Crear cuenta en GitHub (si no tenés)
 
-### Paso 2: Perfil de práctica general
+1. Entrá a [github.com](https://github.com) y hacé clic en **Sign up**.
+2. Completá email, contraseña y nombre de usuario. El plan gratuito es suficiente.
+3. Verificá tu email.
 
-Abrí `argentina/CLAUDE.md` y cargá su contenido en las instrucciones del Project
-de Claude que vas a usar para práctica general.
+### Paso 2: Fork del repositorio
 
-**Para configuración personalizada:** corrí la entrevista de `setup-interview.md`
+"Fork" significa hacer una copia del repositorio en tu propia cuenta. Eso te permite personalizar el sistema sin afectar el original, y recibir las actualizaciones diarias automáticamente.
+
+1. Entrá a [github.com/cristianaboitiz-eng/claude-for-legal-argentina](https://github.com/cristianaboitiz-eng/claude-for-legal-argentina).
+2. Hacé clic en el botón **Fork** (arriba a la derecha).
+3. Dejá todo como está y confirmá con **Create fork**.
+
+Ahora tenés tu propia copia en `github.com/TU-USUARIO/claude-for-legal-argentina`.
+
+> **No descargues el ZIP.** El fork es lo que te permite recibir actualizaciones sin pisar tu configuración.
+
+### Paso 3: Activar actualizaciones automáticas diarias
+
+El repositorio se actualiza todos los dias. Para que tu copia reciba esos cambios automáticamente sin que tengas que hacer nada:
+
+1. En tu fork, hacé clic en la pestaña **Settings**.
+2. En el menu izquierdo, buscá **Actions** → **General**.
+3. Bajá hasta **Workflow permissions** y seleccioná **Read and write permissions**. Guardá.
+4. Hacé clic en la pestaña **Actions** de tu fork.
+5. Buscá el workflow **Sync upstream** y hacé clic en **Run workflow** para verificar que funciona.
+
+A partir de ese momento, todos los dias a las 03:00 (hora Argentina) el sistema incorpora automaticamente las novedades del repositorio original.
+
+### Paso 4: Perfil de práctica general
+
+Abrí `argentina/CLAUDE.md` y cargá su contenido en las instrucciones del Project de Claude que vas a usar para práctica general.
+
+**Para configuración personalizada:** corre la entrevista de `setup-interview.md`
 antes de cargar el CLAUDE.md. La entrevista genera un CLAUDE.md personalizado
 con tu jurisdicción, áreas de práctica, CCT habitual y preferencias de formato.
 El template de output está en `setup-output-TEMPLATE.md`.
@@ -93,7 +123,28 @@ El template de output está en `setup-output-TEMPLATE.md`.
 Sin configuración personalizada: el CLAUDE.md genérico funciona pero opera con
 supuestos genéricos de jurisdicción y área.
 
-### Paso 3: Perfiles por área
+**Configuración local del estudio (`legal.local.md`):** el archivo
+`legal.local.md.template` contiene variables específicas del estudio organizadas
+por rama del derecho: jurisdicción, fuero, departamento judicial, sistema de
+gestión, CCT habitual, tasa de interés, preferencias de formato y notas libres.
+Cubre civil, comercial, laboral, penal, familia, administrativo, tributario,
+societario, concursal, contratos y privacidad.
+
+Según tu flujo de trabajo, usá uno de estos dos métodos:
+
+**Claude.ai Projects:** completá el template, guardalo como `legal.local.md`
+y subilo a las instrucciones del Project junto con el `CLAUDE.md`. Se hace
+una sola vez. El sistema lo lee como configuración de contexto y lo prioriza
+sobre los valores genéricos del perfil.
+
+**Claude Code:** guardá el archivo completado como `legal.local.md` en el
+mismo directorio donde corrés Claude Code. El sistema lo detecta y lo lee
+automáticamente en cada sesión, sin ningún paso adicional.
+
+> No subas `legal.local.md` al repositorio. Agregalo a `.gitignore`.
+> El template (`legal.local.md.template`) sí forma parte del repo.
+
+### Paso 5: Perfiles por área
 
 Para cada área de práctica que uses, cargá el perfil correspondiente junto con
 el CLAUDE.md general en las instrucciones del Project. Cada perfil incluye
@@ -117,7 +168,7 @@ Los perfiles disponibles:
 ante cualquier contrato aportado en sesión; no requiere cargarlo por separado
 salvo que se use el perfil de contratos dedicado.
 
-### Paso 4: Configuración del skill de diagnóstico
+### Paso 6: Configuración del skill de diagnóstico
 
 Cargá `diagnostico-SKILL.md` en cualquier Project donde quieras que el sistema
 diagnostique escritos antes de modificarlos. Puede cargarse solo o junto con
@@ -127,7 +178,7 @@ Para verificar que el skill funciona correctamente, usá `diagnostico-casos-prue
 pegá uno de los tres escritos de prueba y comparás el output del sistema con
 el diagnóstico esperado documentado en el archivo.
 
-### Paso 5: Skill de cómputo de plazos
+### Paso 7: Skill de cómputo de plazos
 
 Cargá `plazos-SKILL.md` en cualquier Project donde necesites calcular plazos procesales
 o administrativos. Puede cargarse solo o junto con cualquier perfil de área; si el
@@ -175,15 +226,28 @@ Conectores de la comunidad que apuntan directamente a las fuentes oficiales arge
 | # | Repositorio / Endpoint | Fuente | Función | Requisito |
 |---|---|---|---|---|
 | 1 | [Ansvar-Systems/argentine-law-mcp](https://github.com/Ansvar-Systems/argentine-law-mcp) | InfoLEG / SAIJ | Texto literal de normas nacionales | Gratuito |
-| 2 | [voftec/normativapba-mcp](https://github.com/voftec/normativapba-mcp) · `https://normativapba-mcp.vercel.app` | normas.gba.gob.ar | Legislación provincial PBA: búsqueda, vigencia, articulado, árbol de dependencias normativas. Conexión directa vía URL en Claude.ai (Settings → Integrations) o instalable vía npx. Ver nota de limitación abajo. | Gratuito |
-| 3 | `claude mcp add juba-mcp -- uvx juba-mcp` | JUBA / SCBA | Jurisprudencia SCBA y cámaras de apelación PBA. Cubre primera instancia desde junio 2025. | Gratuito |
-| 4 | `claude mcp add saij-mcp -- uvx saij-mcp` | SAIJ | Jurisprudencia, legislación, doctrina y dictámenes. Más de 330.000 documentos. | Gratuito |
-| 5 | `claude mcp add csjn-mcp -- uvx csjn-mcp` | CSJN | Fallos de la Corte Suprema de Justicia de la Nación | Gratuito |
-| 6 | `claude mcp add juscaba-mcp -- uvx juscaba-mcp` | Poder Judicial CABA / fueros nacionales | Jurisprudencia de fueros nacionales y locales con sede en CABA | Gratuito |
-| 7 | [joaquinescalante23/saij-mcp](https://github.com/joaquinescalante23/saij-mcp) | SAIJ | Investigación profunda: jurisprudencia, legislación, doctrina y dictámenes; grafo legal; OCR para PDFs históricos; resolución de citas textuales. Opera sobre API no oficial de SAIJ - verificar estado antes de usar. | Gratuito |
-| 8 | [Psflores/Legal-MCP-Server-](https://github.com/Psflores/Legal-MCP-Server-) | PJN / CABA | Jurisprudencia fueros nacionales. Proyecto de la comunidad - verificar estado antes de usar. | Gratuito |
-| 9 | [guidobonomini/argentina-law-mcp-server](https://github.com/guidobonomini/argentina-law-mcp-server) | Praxis local | Análisis semántico, glosario judicial argentino, detección de riesgos calibrada para praxis local | Gratuito |
-| 10 | [datos-justicia-argentina/Tesauro-Saij](https://github.com/datos-justicia-argentina/Tesauro-Saij-de-Derecho-Argentino) | SAIJ | Vocabulario controlado para búsqueda jurídica | Gratuito |
+| 2 | [voftec/normativapba-mcp](https://github.com/voftec/normativapba-mcp) · URL directa: `https://normativapba-mcp.vercel.app/api/mcp/sse` | normas.gba.gob.ar | Legislación provincial PBA: búsqueda, vigencia, articulado, árbol de dependencias normativas. Conexión directa vía URL en Claude.ai sin instalación local. Ver nota de limitación abajo. | Gratuito |
+| 3 | [voftec/InfoLeg-MCP](https://github.com/voftec/InfoLeg-MCP) · URL directa: `https://infoleg-mcp.vercel.app/api/mcp/sse` | infoleg.gob.ar | Texto oficial de normas nacionales. Complementa o reemplaza el conector 1. Conexión directa vía URL en Claude.ai sin instalación local. | Gratuito |
+| 4 | [voftec/juba-mcp](https://github.com/voftec/juba-mcp) · URL directa: `https://juba-mcp.vercel.app/api/mcp/sse` | JUBA / SCBA | Jurisprudencia SCBA y cámaras de apelación PBA. 21 herramientas especializadas por fuero, campo y tipo de voto. Cubre primera instancia desde junio 2025. Conexión directa vía URL en Claude.ai sin instalación local. | Gratuito |
+| 5 | `claude mcp add saij-mcp -- uvx saij-mcp` | SAIJ | Jurisprudencia, legislación, doctrina y dictámenes. Más de 330.000 documentos. | Gratuito |
+| 6 | `claude mcp add csjn-mcp -- uvx csjn-mcp` | CSJN | Fallos de la Corte Suprema de Justicia de la Nación | Gratuito |
+| 7 | `claude mcp add juscaba-mcp -- uvx juscaba-mcp` | Poder Judicial CABA / fueros nacionales | Jurisprudencia de fueros nacionales y locales con sede en CABA | Gratuito |
+| 8 | [joaquinescalante23/saij-mcp](https://github.com/joaquinescalante23/saij-mcp) | SAIJ | Investigación profunda: jurisprudencia, legislación, doctrina y dictámenes; grafo legal; OCR para PDFs históricos; resolución de citas textuales. Opera sobre API no oficial de SAIJ - verificar estado antes de usar. | Gratuito |
+| 9 | [Psflores/Legal-MCP-Server-](https://github.com/Psflores/Legal-MCP-Server-) | PJN / CABA | Jurisprudencia fueros nacionales. Proyecto de la comunidad - verificar estado antes de usar. | Gratuito |
+| 10 | [guidobonomini/argentina-law-mcp-server](https://github.com/guidobonomini/argentina-law-mcp-server) | Praxis local | Análisis semántico, glosario judicial argentino, detección de riesgos calibrada para praxis local | Gratuito |
+| 11 | [datos-justicia-argentina/Tesauro-Saij](https://github.com/datos-justicia-argentina/Tesauro-Saij-de-Derecho-Argentino) | SAIJ | Vocabulario controlado para búsqueda jurídica | Gratuito |
+| 12 | [voftec/bora-mcp](https://github.com/voftec/bora-mcp) · URL directa: `https://bora-mcp.vercel.app/api/mcp/sse` | Boletín Oficial de la República Argentina | Portada del día, sumario por fecha, texto verbatim de avisos, nuevas sociedades (2da Sección), licitaciones (3ra Sección). Conexión directa en Claude.ai sin instalación local. | Gratuito |
+
+#### Como conectar los servidores MCP por URL en Claude.ai (sin instalacion)
+
+Para los conectores marcados "URL directa" (2, 3, 4 y 12), el proceso es identico para todos:
+
+1. Entrá a [claude.ai/settings/integrations](https://claude.ai/settings/integrations) o desde Claude.ai: **Settings → Integrations → Add integration**.
+2. En el campo **URL** pegá la URL del conector (por ejemplo `https://juba-mcp.vercel.app/api/mcp/sse`).
+3. Poné un nombre descriptivo (por ejemplo `JUBA - Jurisprudencia PBA`).
+4. Guardá. El conector queda disponible en todos tus Projects.
+
+No requiere instalar Node.js, npm ni ningun programa adicional.
 
 #### Nota sobre el conector 2 (voftec/normativapba-mcp) - `verificar_vigencia`
 
@@ -195,17 +259,18 @@ Regla de uso: `verificar_vigencia` es un primer filtro, no una fuente definitiva
 
 | Necesidad | Conector recomendado | Fallback manual |
 |---|---|---|
-| Texto de norma nacional | 1 (Ansvar) | infoleg.gob.ar |
-| Texto de norma provincial PBA | 2 (voftec) | normas.gba.gob.ar |
-| Jurisprudencia PBA (SCBA y cámaras) | 3 (juba-mcp) | juba.scba.gov.ar |
-| Jurisprudencia SAIJ (todas las instancias) | 4 (saij-mcp) | saij.gob.ar |
-| Jurisprudencia CSJN | 5 (csjn-mcp) | sj.csjn.gov.ar |
-| Jurisprudencia CABA / fueros nacionales | 6 (juscaba-mcp) | jusbaires.gob.ar |
-| Grafo legal / navegación de citas / OCR histórico | 7 (joaquinescalante23/saij-mcp) | saij.gob.ar |
-| Jurisprudencia PJN alternativa | 8 (Psflores) | pjn.gov.ar |
-| Doctrina y dictámenes | 4 (saij-mcp) o 7 (joaquinescalante23) | saij.gob.ar |
-| Análisis semántico / terminología | 9 (guidobonomini) | Glosario del CLAUDE.md |
-| Mejora de búsquedas jurisprudenciales | 10 (Tesauro SAIJ) | saij.gob.ar |
+| Texto de norma nacional | 3 (voftec/InfoLeg-MCP) o 1 (Ansvar) | infoleg.gob.ar |
+| Texto de norma provincial PBA | 2 (voftec/normativapba-mcp) | normas.gba.gob.ar |
+| Jurisprudencia PBA (SCBA y cámaras) | 4 (voftec/juba-mcp) | juba.scba.gov.ar |
+| Jurisprudencia SAIJ (todas las instancias) | 5 (saij-mcp) | saij.gob.ar |
+| Jurisprudencia CSJN | 6 (csjn-mcp) | sj.csjn.gov.ar |
+| Jurisprudencia CABA / fueros nacionales | 7 (juscaba-mcp) | jusbaires.gob.ar |
+| Grafo legal / navegación de citas / OCR histórico | 8 (joaquinescalante23/saij-mcp) | saij.gob.ar |
+| Jurisprudencia PJN alternativa | 9 (Psflores) | pjn.gov.ar |
+| Doctrina y dictámenes | 5 (saij-mcp) o 8 (joaquinescalante23) | saij.gob.ar |
+| Análisis semántico / terminología | 10 (guidobonomini) | Glosario del CLAUDE.md |
+| Mejora de búsquedas jurisprudenciales | 11 (Tesauro SAIJ) | saij.gob.ar |
+| Texto de normas publicadas en BORA / nuevas sociedades / licitaciones | 12 (voftec/bora-mcp) | boletinoficial.gob.ar |
 
 ### Fuentes primarias sin conector MCP
 
@@ -231,13 +296,33 @@ Acceso directo por el abogado para verificación manual. Son la fuente de verdad
 No son necesarios para empezar. Los perfiles funcionan solos como única configuración.
 Los conectores son la segunda capa: permiten que el sistema consulte fuentes primarias
 automáticamente sin que el abogado tenga que pegar el texto en la sesión. Los conectores
-3 a 6 (Caravario) se instalan vía `uvx`; el conector 2 (voftec) tiene conexión directa
-por URL sin instalación local. Ver `fuentes.md` para instrucciones completas de
-verificación de estado, fallback y combinaciones recomendadas.
+4 a 7 (Caravario) se instalan vía `uvx`; los conectores 2, 3 (voftec) y 12 (BORA Oficial)
+tienen conexión directa por URL en Claude.ai sin instalación local. Ver `fuentes.md`
+para instrucciones completas de verificación de estado, fallback y combinaciones recomendadas.
+
+### Paso 8 (opcional): Automatización de escritorio macOS
+
+Si usás Claude Code en Mac y tu flujo incluye portales judiciales o sistemas de gestión
+de estudio sin API (PJN, MEJ, SCBA, IGJ, AFIP desktop), podés agregar `macos-use`
+para automatizar esa capa:
+
+```bash
+claude mcp add macos-use -- npx -y mcp-server-macos-use
+```
+
+Requiere macOS 13+ y permiso de Accesibilidad en el terminal. Solo aplica a Claude Code;
+no funciona en Claude.ai web. Proyecto de [@m13v_](https://x.com/m13v_). Ver `argentina/macos-automation.md` para casos de uso
+jurídicos, requisitos y limitaciones.
 
 ---
 
 ## Lo que podés hacer desde el día uno
+
+**Plazos procesales y administrativos:**
+- Calcular plazos en días hábiles judiciales o administrativos, días corridos, meses y años
+- Aplicar suspensiones por feria judicial, mediación prejudicial obligatoria y SECLO
+- Verificar vencimientos de prescripción y caducidad en materia civil, laboral y administrativa
+- Activación automática ante consultas de prescripción o caducidad cuando se usa junto con `civil-CLAUDE.md`, `laboral-CLAUDE.md` o `administrativo-CLAUDE.md`; también invocable directamente con `/argentina:plazos`
 
 **Contratos:**
 - Revisar contratos contra la lista de red flags argentina, con referencia a norma aplicable (CCCN, LCT, LDC)
@@ -295,10 +380,10 @@ Frecuencia orientativa: continua para alertas normativas; semestral para el rest
 
 Para actualizaciones urgentes (nueva tasa CNAT, cambio de tope art. 245, reforma
 procesal): modificar directamente la sección `## Alerta normativa` del perfil
-afectado y registrar el cambio en `REGISTRO DE CAMBIOS.md`. Esa sección tiene el impacto
+afectado y registrar el cambio en `CHANGELOG.md`. Esa sección tiene el impacto
 más inmediato en los marcadores que el sistema emite.
 
-La tabla de normas de alta volatilidad del `REGISTRO DE CAMBIOS.md` lista los datos con
+La tabla de normas de alta volatilidad del `CHANGELOG.md` lista los datos con
 mayor frecuencia de cambio y la fecha de última verificación de cada uno.
 
 
@@ -309,15 +394,7 @@ mayor frecuencia de cambio y la fecha de última verificación de cada uno.
 
 El proyecto sigue en desarrollo para adaptar completamente Claude for Legal al derecho argentino.
 
-Si hay abogados argentinos interesados en colaborar, la idea es dividir áreas de trabajo para coordinar esfuerzos, evitar duplicar trabajo y avanzar más rápido. Las áreas abiertas incluyen:
-
-| Área | Ejemplos de contribución |
-|---|---|
-| Perfiles de área | Penal, laboral, compliance, privacidad, procesal |
-| Prompts y ejemplos | Casos de prueba, escritos tipo, checklists |
-| Validación normativa | Verificación de citas, alertas de normas inestables |
-| Fuentes y conectores | Nuevos conectores MCP, cobertura provincial |
-| Testing | Validar outputs contra casos reales |
+Si hay abogados argentinos interesados en colaborar, la idea es dividir áreas de trabajo para coordinar esfuerzos, evitar duplicar trabajo y avanzar más rápido.
 
 **Para reportar un error normativo**, abrí un issue indicando:
 - la norma correcta y la fuente oficial
