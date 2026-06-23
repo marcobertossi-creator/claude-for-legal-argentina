@@ -1,31 +1,122 @@
 name: Sync upstream
+
 on:
   schedule:
     - cron: '0 6 * * *'   # todos los dias a las 06:00 UTC (03:00 Argentina)
   workflow_dispatch:        # ejecutable a mano desde Actions
+
+permissions:
+  contents: write           # pushear a main
+  issues: write             # abrir issue ante conflicto
+
 jobs:
   sync:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      workflows: write
     steps:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
+
       - name: Configurar git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Agregar upstream y hacer merge
+        id: merge
         run: |
-          git remote add upstream https://github.com/anthropics/claude-for-legal.git
+          git remote get-url upstream >/dev/null 2>&1 \
+            || git remote add upstream https://github.com/anthropics/claude-for-legal.git
           git fetch upstream main
-          git merge upstream/main --no-edit --allow-unrelated-histories \
-            -X ours \
-            || echo "Conflictos detectados - revision manual requerida"
+
+          # Merge sin resolucion automatica de conflictos.
+          # - Si mergea limpio (caso comun): entra solo, conservando los cambios
+          #   del upstream Y los tuyos en todo lo que no se solapa.
+          # - Si hay conflicto real (mismas lineas tocadas de los dos lados):
+          #   se aborta el merge y se marca el flag de conflicto. Los pasos
+          #   siguientes abren un issue y hacen fallar el job. Tu main queda
+          #   intacto: no se descarta nada del upstream ni se pisa tu trabajo.
+          if git merge upstream/main --no-edit --allow-unrelated-histories; then
+            echo "Merge limpio con upstream/main."
+            echo "conflict=false" >> "$GITHUB_OUTPUT"
+          else
+            git merge --abort || true
+            echo "::warning::Conflicto al mergear upstream/main. Se abrira un issue para resolucion manual."
+            echo "conflict=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Push si hay cambios
+        if: steps.merge.outputs.conflict != 'true'
         run: |
-          git diff --quiet HEAD origin/main && exit 0
-          git push origin main || { echo "::error::Push rechazado. Revisar permisos de GITHUB_TOKEN o branch protection en main."; exit 1; }
+          git diff --quiet HEAD origin/main || git push origin main
+
+      - name: Abrir issue ante conflicto
+        if: steps.merge.outputs.conflict == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const label = 'upstream-conflict';
+
+            // Asegura que la etiqueta exista (la crea si falta).
+            try {
+              await github.rest.issues.getLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: label,
+              });
+            } catch (e) {
+              await github.rest.issues.createLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: label,
+                color: 'd73a4a',
+                description: 'Conflicto al sincronizar con el upstream de Anthropic',
+              });
+            }
+
+            // Si ya hay un issue abierto con esa etiqueta, no crea otro (anti-spam).
+            const abiertos = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: label,
+              per_page: 1,
+            });
+            if (abiertos.data.length > 0) {
+              core.info('Ya hay un issue de conflicto abierto. No se crea otro.');
+              return;
+            }
+
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const cuerpo = [
+              'La sincronizacion automatica con el upstream de Anthropic se detuvo por un **conflicto de merge**.',
+              '',
+              'No se descarto ningun cambio: tu `main` quedo intacto y el merge se aborto. La sync de esta noche no se aplico.',
+              '',
+              '**Para resolver, en local:**',
+              '```bash',
+              'git fetch upstream main',
+              'git merge upstream/main',
+              '# resolve los conflictos en los archivos marcados, luego:',
+              'git add -A',
+              'git commit',
+              'git push origin main',
+              '```',
+              '',
+              `Run que detecto el conflicto: ${runUrl}`,
+              '',
+              '_Mientras este issue siga abierto, las corridas siguientes no abriran issues nuevos._',
+            ].join('\n');
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Conflicto al sincronizar con upstream - resolucion manual requerida',
+              body: cuerpo,
+              labels: [label],
+            });
+
+      - name: Fallar si hubo conflicto
+        if: steps.merge.outputs.conflict == 'true'
+        run: exit 1
