@@ -1,24 +1,23 @@
 name: Sync upstream
-
 on:
   schedule:
     - cron: '0 6 * * *'   # todos los dias a las 06:00 UTC (03:00 Argentina)
   workflow_dispatch:        # ejecutable a mano desde Actions
-
 jobs:
   sync:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      workflows: write
     steps:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
-
       - name: Configurar git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
       - name: Agregar upstream y hacer merge
         run: |
           git remote add upstream https://github.com/anthropics/claude-for-legal.git
@@ -26,7 +25,7 @@ jobs:
           git merge upstream/main --no-edit --allow-unrelated-histories \
             -X ours \
             || echo "Conflictos detectados - revision manual requerida"
-
       - name: Push si hay cambios
         run: |
-          git diff --quiet HEAD origin/main || git push origin main
+          git diff --quiet HEAD origin/main && exit 0
+          git push origin main || { echo "::error::Push rechazado. Revisar permisos de GITHUB_TOKEN o branch protection en main."; exit 1; }
