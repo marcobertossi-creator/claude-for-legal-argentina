@@ -1,14 +1,11 @@
 name: Sync upstream
-
 on:
   schedule:
     - cron: '0 6 * * *'   # todos los dias a las 06:00 UTC (03:00 Argentina)
   workflow_dispatch:        # ejecutable a mano desde Actions
-
 permissions:
   contents: write           # pushear a main
   issues: write             # abrir issue ante conflicto
-
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -17,19 +14,16 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
-
       - name: Configurar git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
       - name: Agregar upstream y hacer merge
         id: merge
         run: |
           git remote get-url upstream >/dev/null 2>&1 \
             || git remote add upstream https://github.com/anthropics/claude-for-legal.git
           git fetch upstream main
-
           # Merge sin resolucion automatica de conflictos.
           # - Si mergea limpio (caso comun): entra solo, conservando los cambios
           #   del upstream Y los tuyos en todo lo que no se solapa.
@@ -45,19 +39,26 @@ jobs:
             echo "::warning::Conflicto al mergear upstream/main. Se abrira un issue para resolucion manual."
             echo "conflict=true" >> "$GITHUB_OUTPUT"
           fi
-
+      - name: Preservar workflows propios
+        if: steps.merge.outputs.conflict != 'true'
+        run: |
+          # No se sincroniza .github/workflows: el GITHUB_TOKEN no puede
+          # modificar archivos ahi (restriccion fija de GitHub) y, ademas,
+          # no queremos heredar automaticamente el CI/CD de Anthropic.
+          if ! git diff --quiet HEAD origin/main -- .github/workflows; then
+            git checkout origin/main -- .github/workflows
+            git diff --quiet --cached || git commit -m "chore: preservar workflows propios tras sync con upstream"
+          fi
       - name: Push si hay cambios
         if: steps.merge.outputs.conflict != 'true'
         run: |
           git diff --quiet HEAD origin/main || git push origin main
-
       - name: Abrir issue ante conflicto
         if: steps.merge.outputs.conflict == 'true'
         uses: actions/github-script@v7
         with:
           script: |
             const label = 'upstream-conflict';
-
             // Asegura que la etiqueta exista (la crea si falta).
             try {
               await github.rest.issues.getLabel({
@@ -74,7 +75,6 @@ jobs:
                 description: 'Conflicto al sincronizar con el upstream de Anthropic',
               });
             }
-
             // Si ya hay un issue abierto con esa etiqueta, no crea otro (anti-spam).
             const abiertos = await github.rest.issues.listForRepo({
               owner: context.repo.owner,
@@ -87,7 +87,6 @@ jobs:
               core.info('Ya hay un issue de conflicto abierto. No se crea otro.');
               return;
             }
-
             const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
             const cuerpo = [
               'La sincronizacion automatica con el upstream de Anthropic se detuvo por un **conflicto de merge**.',
@@ -108,15 +107,7 @@ jobs:
               '',
               '_Mientras este issue siga abierto, las corridas siguientes no abriran issues nuevos._',
             ].join('\n');
-
             await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: 'Conflicto al sincronizar con upstream - resolucion manual requerida',
-              body: cuerpo,
-              labels: [label],
-            });
-
-      - name: Fallar si hubo conflicto
-        if: steps.merge.outputs.conflict == 'true'
-        run: exit 1
+              title: 'Conflicto al sincronizar con
